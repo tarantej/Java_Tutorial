@@ -49,8 +49,35 @@ Integer Types
     Float - 4 bytes
     Double - 8 bytes 
     
-    Char - 2 bytes
+    Char - 2 bytes  
     
-    
-    
+*/
+
+
+// Type Conversion and Casting
+
+/*
+
+byte b;
+
+int a;
+
+b=a will not work as we cannot assign a value of a byte to integer
+
+a = b will work since integer has a much larger range of value than b. This is also called implicit conversion
+
+// How to convert int value to byte (Typecasting)
+
+Casting is explicit conversion of variable data type
+
+b=(byte)a
+
+// Converting a float value to integer
+
+float f  = 5.6f;  (We add f at the end otherwise the system assumes it is a double data type value by default)
+
+int x = (int)f; 
+
+// If the value being converted is beyond the range of the converted/ casting type, then it will use a modulus operator
+
 */
