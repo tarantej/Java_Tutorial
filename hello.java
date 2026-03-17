@@ -1,14 +1,28 @@
-class Hello
+class hello
 {
     public static void main(String a[])
     {
         // System.out.println("Hello World");
 
         // Adding two numbers
+        
+        /*
+        
         int num1 = 3;
         int num2 = 5;
         int result = num1+num2;
+        
         System.out.println(result);
+        
+        */
+        
+        // Type casting example
+        
+        //int b =127;
+        int c = 12;
+        byte k = (byte)c;
+        
+        System.out.println(k);
     }
 }
 
@@ -72,6 +86,8 @@ Casting is explicit conversion of variable data type
 
 b=(byte)a
 
+you cannot do type casting for a character or boolean type value
+
 // Converting a float value to integer
 
 float f  = 5.6f;  (We add f at the end otherwise the system assumes it is a double data type value by default)
@@ -79,5 +95,9 @@ float f  = 5.6f;  (We add f at the end otherwise the system assumes it is a doub
 int x = (int)f; 
 
 // If the value being converted is beyond the range of the converted/ casting type, then it will use a modulus operator
+
+int a = 257; 
+
+// For example, if we are trying to convert an integer value to a byte and the value of the variable is greater than 127, then a modulus operation will be performed
 
 */
