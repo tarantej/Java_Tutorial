@@ -1,4 +1,4 @@
-class hello
+class Hello
 {
     public static void main(String a[])
     {
@@ -18,11 +18,77 @@ class hello
         
         // Type casting example
         
-        //int b =127;
-        int c = 12;
+        /*
+         int b =127;
+         int c = 12;
         byte k = (byte)c;
+         */
         
-        System.out.println(k);
+        
+        
+        
+        //Assignment Operators
+        
+        int num1=7;
+        int num2=5;
+        
+        //Addition
+        
+        int resultAdd = num1+num2;
+        System.out.println("\nAddition: "+ resultAdd);
+        
+        //Subtraction
+        
+        int resultSub = num1-num2;
+        System.out.println("\nSubtraction: "+ resultSub);
+        
+        //Multiplication
+        
+        int resultMul = num1*num2;
+        System.out.println("\nMultiplication: "+ resultMul);
+        
+        //Division / Modulus
+        
+        int resultDiv = num1%num2;
+        System.out.println("\nDivision / Modulus: "+ resultDiv);
+        
+        //		Incrementing Values
+        
+        //		Method 1
+        int incMet1 = num1+1;
+        System.out.println("\nIncrement Method 1 (num1+1): "+incMet1);
+        
+        //Method 2 (Post Increment)
+        int incMet2 = num1++;
+        System.out.println("\nIncrement Method 2 (Post Increment(num1++)): "+incMet2);
+        
+        //Method 3 (Pre Increment)
+        int incMet3 = ++num1;
+        System.out.println("\nIncrement Method 3 Pre Increment(++num1)): "+incMet3);
+        
+        //		Decrementing Values
+        int decMet = num1--;
+        System.out.println("\nDecrement Method (num1--): "+decMet);
+        
+         			//		Why are there two different types on increment methods
+        
+        		//					The difference comes when we are fetching the value
+        
+        int exVal = 10;
+        
+																						//							If we use pre increment, the increment is applied to the value before showing the result        
+        
+        int preInc = ++exVal;			//		The incremented value should be 11
+        
+        System.out.println("\nPre Increment Method (++exVal): "+preInc);
+        
+        //							If we use post increment, the increment is applied to the value after the value has been fetched    
+        
+        int postInc = exVal++;			//		The incremented value should still be 11
+        
+        System.out.println("\nPost Increment Method (exVal++): "+postInc);
+        
+        
     }
 }
 
@@ -44,6 +110,7 @@ class hello
 // Primitive Data Types - Simple, Basic to use
 
 // Data Type Categories - 
+
 /*
     Integer - byte, short, int, long 
     Float - double, flat
@@ -52,7 +119,7 @@ class hello
 
     each type has its own size
 
-Integer Types
+//		Integer Types
     int - 4 bytes
     long - 8 bytes
     short - 2 bytes
@@ -64,40 +131,41 @@ Integer Types
     Double - 8 bytes 
     
     Char - 2 bytes  
-    
 */
-
 
 // Type Conversion and Casting
 
 /*
-
-byte b;
-
-int a;
+										byte b;
+												int a;
 
 b=a will not work as we cannot assign a value of a byte to integer
 
 a = b will work since integer has a much larger range of value than b. This is also called implicit conversion
 
+*/
+
 // How to convert int value to byte (Typecasting)
 
-Casting is explicit conversion of variable data type
+/*
 
-b=(byte)a
+//		Casting is explicit conversion of variable data type
 
-you cannot do type casting for a character or boolean type value
+b=(byte)a;
+
+//		you cannot do type casting for a character or boolean type value
+
+*/
 
 // Converting a float value to integer
 
+/*
 float f  = 5.6f;  (We add f at the end otherwise the system assumes it is a double data type value by default)
 
-int x = (int)f; 
+int x = (int)f;
 
 // If the value being converted is beyond the range of the converted/ casting type, then it will use a modulus operator
 
-int a = 257; 
-
-// For example, if we are trying to convert an integer value to a byte and the value of the variable is greater than 127, then a modulus operation will be performed
+int a = 257;
 
 */
