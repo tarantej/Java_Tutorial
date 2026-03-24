@@ -6,50 +6,57 @@ class Hello
 
         // Adding two numbers
         
-        /*
+        //System.out.println("\nAdding two numbers");
+        
         
         int num1 = 3;
         int num2 = 5;
         int result = num1+num2;
         
-        System.out.println(result);
-        
-        */
+        System.out.println("\nAdding two numbers:"+result);
         
         // Type casting example
         
-        /*
+        System.out.println("\nType Casting Example");
+        
+        
          int b =127;
          int c = 12;
         byte k = (byte)c;
-         */
         
+        System.out.println(k);
         
+        //		// If the value being converted is beyond the range of the converted/ casting type, then it will use a modulus operator and divide the byte range (256) with the number and show the remainder as output
         
+        System.out.println("\nIf the value being converted is beyond the range of the converted/ casting type, then it will use a modulus operator and divide the byte range (256) with the number and show the remainder as output");
+
+																				int TypeCastInt = 257;
+																				byte tcEx = (byte)TypeCastInt;
+        System.out.println("\nDivide the input number (TypeCastInt) with the byte range (256) and show the remainder as output: " +tcEx);
         
         //Assignment Operators
         
-        int num1=7;
-        int num2=5;
+        int AOnum1=7;
+        int AOnum2=5;
         
         //Addition
         
-        int resultAdd = num1+num2;
+        int resultAdd = AOnum1+AOnum2;
         System.out.println("\nAddition: "+ resultAdd);
         
         //Subtraction
         
-        int resultSub = num1-num2;
+        int resultSub = AOnum1-AOnum2;
         System.out.println("\nSubtraction: "+ resultSub);
         
         //Multiplication
         
-        int resultMul = num1*num2;
+        int resultMul = AOnum1*AOnum2;
         System.out.println("\nMultiplication: "+ resultMul);
         
         //Division / Modulus
         
-        int resultDiv = num1%num2;
+        int resultDiv = AOnum1%AOnum2;
         System.out.println("\nDivision / Modulus: "+ resultDiv);
         
         //		Incrementing Values
@@ -87,85 +94,5 @@ class Hello
         int postInc = exVal++;			//		The incremented value should still be 11
         
         System.out.println("\nPost Increment Method (exVal++): "+postInc);
-        
-        
     }
 }
-
-// Run java Hello (the class name on console)
-
-// JVM - Java Virtual MAchine
-// JRE - Java Runtime Environment - contains the JVM with additional libraries
-// JDK - Java Development Kit - Installed on the machine to enable Java code development
-// WORA - Write once run anywhere
-// Variable - Where you store your values of your data
-// Variable types - String, Int
-// Always first compile using javac file.java and then run with java filename
-// while we can use the print function like System.out.print, the line System.out.println prints the output in the next line
-
-// Data Types 
-
-// Lot of in built data
-
-// Primitive Data Types - Simple, Basic to use
-
-// Data Type Categories - 
-
-/*
-    Integer - byte, short, int, long 
-    Float - double, flat
-    Character -  char
-    Boolean - True, False
-
-    each type has its own size
-
-//		Integer Types
-    int - 4 bytes
-    long - 8 bytes
-    short - 2 bytes
-    Byte - 1 byte (8 bits) 
-    
-    Integer Range : -128 to 127
-    
-    Float - 4 bytes
-    Double - 8 bytes 
-    
-    Char - 2 bytes  
-*/
-
-// Type Conversion and Casting
-
-/*
-										byte b;
-												int a;
-
-b=a will not work as we cannot assign a value of a byte to integer
-
-a = b will work since integer has a much larger range of value than b. This is also called implicit conversion
-
-*/
-
-// How to convert int value to byte (Typecasting)
-
-/*
-
-//		Casting is explicit conversion of variable data type
-
-b=(byte)a;
-
-//		you cannot do type casting for a character or boolean type value
-
-*/
-
-// Converting a float value to integer
-
-/*
-float f  = 5.6f;  (We add f at the end otherwise the system assumes it is a double data type value by default)
-
-int x = (int)f;
-
-// If the value being converted is beyond the range of the converted/ casting type, then it will use a modulus operator
-
-int a = 257;
-
-*/
