@@ -42,8 +42,8 @@
 // Type Conversion and Casting
 
 /*
-										byte b;
-												int a;
+	byte b;
+	int a;
 
 b=a will not work as we cannot assign a value of a byte to integer
 
@@ -69,103 +69,108 @@ a = b will work since integer has a much larger range of value than b. This is a
 
 //		int x = (int)f;
 
-// Java if else statement Test
+// Type casting example
+
+// System.out.println("\nType Casting Example");
 
 /*
-    Java Conditionals: Evaluate Student Result with If-Else and Grading Logic
+int b = 127;
+int c = 12;
+byte k = (byte)c;
 
-Student Performance Evaluation Using If-Else in Java
-
-Write a Java program to evaluate a student's performance using if-else and else-if statements.
-
-You are given the following:
-
-    An integer variable score = 75
-
-    A character variable grade = 'B'
-
-Your task is to:
-
-    Use if-else to check if the student passed or failed.
-
-        A score of 50 or above is considered a pass.
-
-        Print "Passed" or "Failed" accordingly.
-
-    Use else-if conditions to assign and print a grade based on the score:
-
-        A for 90 and above
-
-        B for 75 to 89
-
-        C for 60 to 74
-
-        D for below 60
-
-    Use System.out.println() to clearly display the output.
-
-Instructions:
-
-    The variables score and grade are already declared for you.
-
-    Use if-else to evaluate pass/fail status.
-
-    Use else-if to assign and print the grade based on the score.
-
-    Ensure the output formatting matches the example output.
-
-    Do not use ternary or switch statements in this exercise.
-
-
-Expected Output:
-
-  Passed
-
-  Grade:  B
+System.out.println(k);
 */
 
-// Output
+
+// 	If the value being converted is beyond the range of the converted/ casting type, then it will use a modulus operator and divide the byte range (256) with the number and show the remainder as output
+
+//	System.out.println("\nIf the value being converted is beyond the range of the converted/ casting type, then it will use a modulus operator and divide the byte range (256) with the number and show the remainder as output");
+
+
+/*
+int TypeCastInt = 257;
+byte tcEx = (byte)TypeCastInt;
+System.out.println("\nDivide the input number (TypeCastInt) with the byte range (256) and show the remainder as output: " +tcEx);
+*/
+
+// Assignment Operators
+
+int AOnum1 = 7;
+int AOnum2 = 5;
+
+//Addition
+
+int resultAdd = AOnum1+AOnum2;
+System.out.println("\nAddition: "+ resultAdd);
+
+//Subtraction
+
+int resultSub = AOnum1-AOnum2;
+System.out.println("\nSubtraction: "+ resultSub);
+
+//Multiplication
+
+int resultMul = AOnum1*AOnum2;
+System.out.println("\nMultiplication: "+ resultMul);
+
+//Division / Modulus
+
+int resultDiv = AOnum1%AOnum2;
+System.out.println("\nDivision / Modulus: "+ resultDiv);
+
+//		Incrementing Values
+
+//		Method 1
+int incMet1 = num1+1;
+System.out.println("\nIncrement Method 1 (num1+1): "+incMet1);
+
+//Method 2 (Post Increment)
+int incMet2 = num1++;
+System.out.println("\nIncrement Method 2 (Post Increment(num1++)): "+incMet2);
+
+//Method 3 (Pre Increment)
+int incMet3 = ++num1;
+System.out.println("\nIncrement Method 3 Pre Increment(++num1)): "+incMet3);
+
+//		Decrementing Values
+int decMet = num1--;
+System.out.println("\nDecrement Method (num1--): "+decMet);
+
+//		Why are there two different types on increment methods
+
+//					The difference comes when we are fetching the value
+
+int exVal = 10;
+
+//							If we use pre increment, the increment is applied to the value before showing the result
+
+int preInc = ++exVal; //		The incremented value should be 11
+
+System.out.println("\nPre Increment Method (++exVal): "+preInc);
+
+//							If we use post increment, the increment is applied to the value after the value has been fetched
+
+int postInc = exVal++; //		The incremented value should still be 11
+
+System.out.println("\nPost Increment Method (exVal++): "+postInc);
+
+//	Conditional Statements
+
+//	Executing code based on set of pre-defined conditions and depending whether the pre-defined conditions match in the code during execution
+
+//  For Loop
+
+/*
+		int i=1;
+		for(i<5)
+		{
+  			System.Out.Print("For Loop: "+ i + " ");
+		}
+*/
 
 /*
 
-    public class Exercise {
-   public static void main(String[] args) {
-       
-        int score = 75;
-        char grade = 'B';
-        
-        // Passed or Failed
-        
-       if(score>=50)
-       {
-           System.out.println("Passed");
-       }
-       else
-       {
-           System.out.println("Failed");
-       }
-       
-        // Grading
-        
-        if(score>=90)
-        {
-            System.out.println("Grade: A");
-        }
-        else if(score>=75 && score<=89)
-        {
-            System.out.println("Grade: B");
-        }
-        else if(score>=60 && score<=74)
-        {
-            System.out.println("Grade: C");
-        }
-        else
-        {
-            System.out.println("Grade: D");
-        }
-       
-   }
-}
+
 
  */
 
