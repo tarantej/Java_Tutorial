@@ -154,9 +154,111 @@ int postInc = exVal++; //		The incremented value should still be 11
 
 System.out.println("\nPost Increment Method (exVal++): "+postInc);
 
+// Logical Operators
+
+
+
+// Ternary Operators
+
+/*
+    int n = 5;
+    int result = 0;
+
+    We want to show the value of result based on the condition being true or false
+
+    if the condition is true, the value of result will be 10; else it will be 20.
+
+    We can show this using the Ternary operator
+
+    result = n%2==0 ? 10:20
+
+    System.out.println(result);
+
+
+ */
+
+
+
 //	Conditional Statements
 
 //	Executing code based on set of pre-defined conditions and depending whether the pre-defined conditions match in the code during execution
+
+//  Switch Statement
+
+/*
+
+int n = 7;
+switch(n)
+{
+
+    case 1:
+        System.out.println("Monday");
+        break;
+    case 2:
+        System.out.println("Tuesday");
+        break;
+    case 3:
+        System.out.println("Wednesday");
+        break;
+    case 4:
+        System.out.println("Thursday");
+        break;
+    case 5:
+        System.out.println("Friday");
+        break;
+    case 6:
+        System.out.println("Saturday");
+        break;
+    case 7:
+        System.out.println("Sunday");
+        break;
+    default:
+        System.out.println("Enter a valid number");
+        break;
+
+
+
+}
+
+
+ */
+
+
+// If Else
+
+/*
+
+int x = 28;
+if(x>10 && x<=20)
+{
+    System.out.println("Hello");
+}
+else
+{
+    System.out.println("Bye");
+}
+
+ // If Else if
+
+ int eifx = 8;
+ int eify = 7;
+ int eifz = 9;
+
+ if(eifx>eify && eify>eifz)
+ {
+    System.out.println(eifx);
+ }
+ else if(eify>eifx && eify>eifz)
+ {
+    System.out.println(eify);
+ }
+ else
+ {
+    System.out.println(eifz);
+ }
+
+ */
+
 
 //  For Loop
 
@@ -173,4 +275,3 @@ System.out.println("\nPost Increment Method (exVal++): "+postInc);
 
 
  */
-
