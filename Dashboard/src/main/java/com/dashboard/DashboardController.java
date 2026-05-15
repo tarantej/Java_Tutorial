@@ -14,6 +14,7 @@ public class DashboardController {
     @GetMapping("/")
     public String home()
     {
+
         return "index";
     }
 
@@ -23,7 +24,7 @@ public class DashboardController {
     public String loginPage()
     {
 
-        return"login";
+        return"Login/login";
     }
 
     @PostMapping("/login")
