@@ -54,19 +54,14 @@ public class DashboardController {
                 String firstName = rs.getString("first_name");
                 String lastName = rs.getString("last_name");
 
-                model.addAttribute(
-                        "username",userName
-                );
+                model.addAttribute("username",userName);
 
                 return "Dashboard/dashboard";
             }
 
             else {
 
-                model.addAttribute(
-                        "error",
-                        "Invalid Username or Password"
-                );
+                model.addAttribute("error", "Invalid Username or Password");
 
                 return "Login/login";
             }
@@ -99,7 +94,22 @@ public class DashboardController {
     @GetMapping("/dashboard")
     public String Dashboard()
     {
-        System.out.println("Welcome to the Dashboard");
         return "Dashboard/dashboard";
+    }
+
+    @GetMapping("/profile")
+    public String UserProfile()
+    {
+        return "Dashboard/profile";
+    }
+    @GetMapping("/settings")
+    public String UserSettings()
+    {
+        return "Dashboard/settings";
+    }
+    @GetMapping("/blank")
+    public String BlankPage()
+    {
+        return "Dashboard/blank";
     }
 }
