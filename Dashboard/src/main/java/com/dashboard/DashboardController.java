@@ -1,6 +1,7 @@
 package com.dashboard;
 
 import java.sql.*;
+import jakarta.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +29,7 @@ public class DashboardController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam("username") String username, @RequestParam("password") String password, Model model)
+    public String login(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session,  Model model)
     {
         // Login Validation
 
@@ -54,9 +55,11 @@ public class DashboardController {
                 String firstName = rs.getString("first_name");
                 String lastName = rs.getString("last_name");
 
-                model.addAttribute("username",userName);
+                session.setAttribute("username", userName);
+                session.setAttribute("firstName", firstName);
+                session.setAttribute("lastName", lastName);
 
-                return "Dashboard/dashboard";
+                return "redirect:/dashboard";
             }
 
             else {
@@ -84,7 +87,9 @@ public class DashboardController {
     // Logout
 
     @GetMapping("/logout")
-    public String logout() {
+    public String logout(HttpSession session)
+    {
+        session.invalidate();
 
         return "redirect:/login";
     }
@@ -92,24 +97,44 @@ public class DashboardController {
     //  Dashboard Page
 
     @GetMapping("/dashboard")
-    public String Dashboard()
+    public String Dashboard(HttpSession session)
     {
+        if(session.getAttribute("username") == null)
+        {
+            return "redirect:/login";
+        }
+
         return "Dashboard/dashboard";
     }
 
     @GetMapping("/profile")
-    public String UserProfile()
+    public String UserProfile(HttpSession session)
     {
+        if(session.getAttribute("username") == null)
+        {
+            return "redirect:/login";
+        }
+
         return "Dashboard/profile";
     }
     @GetMapping("/settings")
-    public String UserSettings()
+    public String UserSettings(HttpSession session)
     {
+        if(session.getAttribute("username") == null)
+        {
+            return "redirect:/login";
+        }
+
         return "Dashboard/settings";
     }
     @GetMapping("/blank")
-    public String BlankPage()
+    public String BlankPage(HttpSession session)
     {
+        if(session.getAttribute("username") == null)
+        {
+            return "redirect:/login";
+        }
+        
         return "Dashboard/blank";
     }
 }

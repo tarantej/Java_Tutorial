@@ -16,7 +16,7 @@
             <!-- Main Content -->
             <div id="content">
             <!-- Topbar -->
-                <div th:replace="~{Dashboard/fragments/header :: header}"></div>
+                <div th:replace="~{Dashboard/fragments/topbar :: topbar}"></div>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -36,18 +36,18 @@
 
     </div>
     <!-- End of Page Wrapper -->
-    <div th:replace="~{Dashboard/fragments/scrolltotop :: scrolltotop}"></div>
-    <div th:replace="~{Dashboard/fragments/logout-modal :: logout-modal}"></div>
+        <div th:replace="~{Dashboard/fragments/scrolltotop :: scrolltotop}"></div>
+        <div th:replace="~{Dashboard/fragments/logout-modal :: logout-modal}"></div>
 
     <!-- Bootstrap core JavaScript-->
-    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
-    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+        <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+        <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+        <script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script th:src="@{/js/sb-admin-2.min.js}"></script>
+        <script th:src="@{/js/sb-admin-2.min.js}"></script>
 </body>
 
 </html>

@@ -170,7 +170,7 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">D<span th:text="${username}"></span></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><span th:text="${session.username}"></span></span>
                 <img class="img-profile rounded-circle"
                      th:src="@{/img/undraw_profile.svg}">
             </a>
