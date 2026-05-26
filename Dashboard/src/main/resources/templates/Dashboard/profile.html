@@ -28,6 +28,147 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">My Profile</h1>
 
+                    <form th:action="@{/profile}" method="post" enctype="multipart/form-data">
+
+                        <div class="row">
+
+                            <!-- LEFT PROFILE PANEL -->
+                            <div class="col-lg-4 mb-4">
+
+                                <div class="card shadow-sm border-0">
+
+                                    <div class="card-body text-center">
+
+                                        <!-- Profile Image -->
+                                        <img th:src="${profile_picture != null} ?
+                                        @{'/img/' + ${profile_picture}} : @{'/img/user-avatar.png'}"
+                                             class="rounded-circle shadow-sm mb-4"
+                                             style="width:180px;
+                                             height:180px;
+                                             object-fit:cover;
+                                             border:5px solid #f8f9fc;"
+                                             alt="User Avatar">
+
+                                        <!-- Upload Button -->
+                                        <div class="mb-4">
+
+                                            <label for="profilePicture"
+                                                   class="btn btn-outline-primary btn-block">
+                                                Upload Photo
+                                            </label>
+
+                                            <input type="file"
+                                                   id="profilePicture"
+                                                   name="profilePicture"
+                                                   accept="image/*"
+                                                   style="display:none;">
+                                        </div>
+
+                                        <!-- Username -->
+                                        <div class="mb-3 text-left">
+
+                                            <label class="font-weight-bold text-dark">
+                                                Username
+                                            </label>
+
+                                            <div class="form-control bg-light">
+                                                <span th:text="${username}"></span>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- User Role -->
+                                        <div class="mb-3 text-left">
+
+                                            <label class="font-weight-bold text-dark">
+                                                User Role
+                                            </label>
+
+                                            <div class="form-control bg-light text-capitalize">
+                                                <span th:text="${user_role}"></span>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- RIGHT PROFILE PANEL -->
+                            <div class="col-lg-8">
+
+                                <div class="card shadow-sm border-0">
+
+                                    <div class="card-body">
+
+                                        <h5 class="mb-4 font-weight-bold text-primary">
+                                            Profile Information
+                                        </h5>
+
+                                        <div class="row">
+
+                                            <!-- First Name -->
+                                            <div class="col-md-6 mb-4">
+
+                                                <label class="font-weight-bold">
+                                                    First Name
+                                                </label>
+
+                                                <input type="text"
+                                                       class="form-control"
+                                                       name="first_name"
+                                                       th:value="${first_name}">
+
+                                            </div>
+
+                                            <!-- Last Name -->
+                                            <div class="col-md-6 mb-4">
+
+                                                <label class="font-weight-bold">
+                                                    Last Name
+                                                </label>
+
+                                                <input type="text"
+                                                       class="form-control"
+                                                       name="last_name"
+                                                       th:value="${last_name}">
+
+                                            </div>
+
+                                            <!-- Email -->
+                                            <div class="col-md-12 mb-4">
+
+                                                <label class="font-weight-bold">
+                                                    Email Address
+                                                </label>
+
+                                                <input type="email"
+                                                       class="form-control"
+                                                       name="email"
+                                                       th:value="${email}">
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- Save Button -->
+                                        <button type="submit"
+                                                class="btn btn-primary px-4">
+                                            Save Changes
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
                 </div>
                 <!-- /.container-fluid -->
 
