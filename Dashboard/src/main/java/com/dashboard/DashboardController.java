@@ -162,9 +162,9 @@ public class DashboardController {
 
     @PostMapping("/profile")
     public String UpdateProfile(HttpSession session,
-                                @RequestParam String first_name,
-                                @RequestParam String last_name,
-                                @RequestParam String email,
+//                                @RequestParam String first_name,
+//                                @RequestParam String last_name,
+//                                @RequestParam String email,
                                 @RequestParam("profilePicture") MultipartFile file)
     {
         if(session.getAttribute("username") == null)
@@ -184,6 +184,23 @@ public class DashboardController {
 
             String filename = null;
 
+            // Get existing profile picture
+            String currentQuery =
+                    "SELECT profile_picture FROM users WHERE username=?";
+
+            PreparedStatement currentPs =
+                    con.prepareStatement(currentQuery);
+
+            currentPs.setString(1, username);
+
+            ResultSet currentRs =
+                    currentPs.executeQuery();
+
+            if(currentRs.next())
+            {
+                filename = currentRs.getString("profile_picture");
+            }
+
             // Upload Image
             if(!file.isEmpty())
             {
@@ -192,10 +209,12 @@ public class DashboardController {
                         + file.getOriginalFilename();
 
                 Path uploadPath = Paths.get(
-                        "src/main/resources/static/img"
+                        "src/main/resources/static/uploads/profile"
                 );
 
-                Files.createDirectories(uploadPath);
+                if (!Files.exists(uploadPath)) {
+                    Files.createDirectories(uploadPath);
+                }
 
                 Files.copy(
                         file.getInputStream(),
@@ -208,23 +227,22 @@ public class DashboardController {
 
             String query = """
                 UPDATE users
-                SET first_name=?,
-                    last_name=?,
-                    email=?,
+                SET first_name='Tarantej',
+                    last_name='Singh',
+                    email='tarantejsingh@gmail.com',
                     profile_picture=?
-                WHERE username=?
+                WHERE username='Admin'
                 """;
 
             PreparedStatement ps = con.prepareStatement(query);
 
-            ps.setString(1, first_name);
-            ps.setString(2, last_name);
-            ps.setString(3, email);
-            ps.setString(4, filename);
-            ps.setString(5, username);
+            ps.setString(1, filename);
+            ps.setString(2, username);
 
-//            System.out.println(filename);
-
+//            ps.setString(3, first_name);
+//            ps.setString(4, last_name);
+//            ps.setString(5, email);
+            
             ps.executeUpdate();
 
         }

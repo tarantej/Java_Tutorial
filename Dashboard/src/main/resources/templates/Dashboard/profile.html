@@ -25,147 +25,491 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">My Profile</h1>
+                    <!-- Page Header -->
+                    <div class="mb-4">
+
+                        <h1 class="h2 font-weight-bold text-dark">
+                            My Profile
+                        </h1>
+
+                        <p class="text-muted">
+                            Manage your personal information and account details.
+                        </p>
+
+                    </div>
 
                     <form th:action="@{/profile}" method="post" enctype="multipart/form-data">
 
-                        <div class="row">
+                        <div class="row mb-4">
 
-                            <!-- LEFT PROFILE PANEL -->
-                            <div class="col-lg-4 mb-4">
-
-                                <div class="card shadow-sm border-0">
-
-                                    <div class="card-body text-center">
-
-                                        <!-- Profile Image -->
-                                        <img th:src="${profile_picture != null} ?
-                                        @{'/img/' + ${profile_picture}} : @{'/img/user-avatar.png'}"
-                                             class="rounded-circle shadow-sm mb-4"
-                                             style="width:180px;
-                                             height:180px;
-                                             object-fit:cover;
-                                             border:5px solid #f8f9fc;"
-                                             alt="User Avatar">
-
-                                        <!-- Upload Button -->
-                                        <div class="mb-4">
-
-                                            <label for="profilePicture"
-                                                   class="btn btn-outline-primary btn-block">
-                                                Upload Photo
-                                            </label>
-
-                                            <input type="file"
-                                                   id="profilePicture"
-                                                   name="profilePicture"
-                                                   accept="image/*"
-                                                   style="display:none;">
-                                        </div>
-
-                                        <!-- Username -->
-                                        <div class="mb-3 text-left">
-
-                                            <label class="font-weight-bold text-dark">
-                                                Username
-                                            </label>
-
-                                            <div class="form-control bg-light">
-                                                <span th:text="${username}"></span>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- User Role -->
-                                        <div class="mb-3 text-left">
-
-                                            <label class="font-weight-bold text-dark">
-                                                User Role
-                                            </label>
-
-                                            <div class="form-control bg-light text-capitalize">
-                                                <span th:text="${user_role}"></span>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <!-- RIGHT PROFILE PANEL -->
+                            <!-- Upload Photo Card -->
                             <div class="col-lg-8">
 
                                 <div class="card shadow-sm border-0">
 
                                     <div class="card-body">
 
-                                        <h5 class="mb-4 font-weight-bold text-primary">
-                                            Profile Information
-                                        </h5>
+                                        <div class="row mb-4">
+                                            <div class="col-md-4 mt-3 text-center">
+                                                <img th:src="${profile_picture != null} ? @{'/uploads/profile/'
+                                                + ${profile_picture}} : @{'/img/user-avatar.png'}"
+                                                     class="rounded-circle shadow"
+                                                     style="width:180px;
+                                             height:180px;
+                                             object-fit:cover;
+                                             border:4px solid #ff6b00;">
+                                                <div class="mt-4">
+                                                    <label for="profilePicture"
+                                                           class="btn btn-outline-warning">
 
-                                        <div class="row">
+                                                        <i class="fas fa-upload mr-2"></i>
 
-                                            <!-- First Name -->
-                                            <div class="col-md-6 mb-4">
+                                                        Upload New Photo
 
-                                                <label class="font-weight-bold">
-                                                    First Name
-                                                </label>
+                                                    </label>
 
-                                                <input type="text"
-                                                       class="form-control"
-                                                       name="first_name"
-                                                       th:value="${first_name}">
-
-                                            </div>
-
-                                            <!-- Last Name -->
-                                            <div class="col-md-6 mb-4">
-
-                                                <label class="font-weight-bold">
-                                                    Last Name
-                                                </label>
-
-                                                <input type="text"
-                                                       class="form-control"
-                                                       name="last_name"
-                                                       th:value="${last_name}">
+                                                    <input type="file"
+                                                           id="profilePicture"
+                                                           name="profilePicture"
+                                                           style="display:none;">
+                                                </div>
 
                                             </div>
 
-                                            <!-- Email -->
-                                            <div class="col-md-12 mb-4">
+                                            <!-- User Details Card-->
+                                            <div class="col-md-8">
 
-                                                <label class="font-weight-bold">
-                                                    Email Address
-                                                </label>
+                                                <h2 class="font-weight-bold">
+                                                    Admin
+                                                </h2>
 
-                                                <input type="email"
-                                                       class="form-control"
-                                                       name="email"
-                                                       th:value="${email}">
+                                                <span class="badge badge-warning px-3 py-2 mb-3">
+                            Administrator
+                        </span>
 
-                                            </div>
+                                                <div class="mt-4">
+
+                                                    <p>
+                                                        <i class="fas fa-envelope mr-2"></i>
+                                                        admin@example.com
+                                                    </p>
+
+                                                    <p>
+                                                        <i class="fas fa-calendar-alt mr-2"></i>
+                                                        Joined January 10, 2025
+                                                    </p>
+
+                                                    <p>
+                                                        <i class="fas fa-clock mr-2"></i>
+                                                        Last Login: May 18, 2025
+                                                    </p>
+
+                                                    <p>
+                                                        <i class="fas fa-map-marker-alt mr-2"></i>
+                                                        New Delhi, India
+                                                    </p>
+
+                                                </div>
+
 
                                         </div>
 
-                                        <!-- Save Button -->
-                                        <button type="submit"
-                                                class="btn btn-primary px-4">
-                                            Save Changes
-                                        </button>
+
 
                                     </div>
 
                                 </div>
 
                             </div>
+                            </div>
 
+
+
+
+                            <!-- ABOUT ME PANEL -->
+                            <div class="col-lg-4">
+                                <div class="card shadow-sm border-0 h-100">
+                                    <div class="card-body">
+
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h4 class="font-weight-bold">About Me</h4>
+
+                                            <button class="btn btn-outline-warning btn-sm">
+                                                <i class="fas fa-pen"></i>
+                                            </button>
+                                        </div>
+
+                                        <p class="text-muted">
+                                            Full-stack developer passionate about building modern,
+                                            scalable web applications. I love learning new technologies
+                                            and solving real-world problems.
+                                        </p>
+
+                                        <hr>
+
+                                        <div class="row text-center">
+
+                                            <div class="col-6">
+                                                <div class="mb-2">
+                                                    <i class="fas fa-file-alt fa-2x text-warning"></i>
+                                                </div>
+
+                                                <h4 class="font-weight-bold">128</h4>
+
+                                                <small class="text-muted">
+                                                    Total Posts
+                                                </small>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="mb-2">
+                                                    <i class="far fa-comment fa-2x text-warning"></i>
+                                                </div>
+
+                                                <h4 class="font-weight-bold">342</h4>
+
+                                                <small class="text-muted">
+                                                    Total Comments
+                                                </small>
+                                            </div>
+
+                                        </div>
+
+                                        <hr>
+
+                                        <button class="btn btn-outline-warning btn-block">
+                                            View My Posts
+                                            <i class="fas fa-arrow-right ml-2"></i>
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        <!-- Row End -->
                         </div>
+
+                        <div class="row mb-4 mt-2">
+                            <!-- Personal Information PANEL -->
+                            <div class="col-lg-8">
+                                <div class="card shadow-sm border-0">
+
+                                    <div class="card-body">
+
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+
+                                            <h4 class="font-weight-bold text-warning">
+                                                Personal Information
+                                            </h4>
+
+                                            <button class="btn btn-outline-warning btn-sm">
+                                                <i class="fas fa-pen"></i>
+                                            </button>
+
+                                        </div>
+
+                                        <table class="table table-borderless">
+
+                                            <tr>
+                                                <td width="35%">
+                                                    <strong>First Name</strong>
+                                                </td>
+                                                <td>Tarantej</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <strong>Last Name</strong>
+                                                </td>
+                                                <td>Singh</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <strong>Username</strong>
+                                                </td>
+                                                <td>Admin</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <strong>Email Address</strong>
+                                                </td>
+                                                <td>tarantejsingh@gmail.com</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <strong>Phone Number</strong>
+                                                </td>
+                                                <td>+91 98765 43210</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <strong>Bio</strong>
+                                                </td>
+                                                <td>
+                                                    Full-stack developer passionate about building
+                                                    modern web applications.
+                                                </td>
+                                            </tr>
+
+                                        </table>
+
+                                        <button class="btn btn-warning">
+                                            Edit Information
+                                        </button>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Account Summary PANEL -->
+                            <div class="col-lg-4">
+                                <div class="card shadow-sm border-0 h-100">
+
+                                    <div class="card-body">
+
+                                        <h4 class="font-weight-bold text-warning mb-4">
+                                            Account Summary
+                                        </h4>
+
+                                        <div class="d-flex justify-content-between mb-3">
+            <span>
+                <i class="fas fa-user-shield mr-2"></i>
+                User Role
+            </span>
+
+                                            <span class="badge badge-warning">
+                Administrator
+            </span>
+                                        </div>
+
+                                        <hr>
+
+                                        <div class="d-flex justify-content-between mb-3">
+            <span>
+                <i class="fas fa-user-check mr-2"></i>
+                Account Status
+            </span>
+
+                                            <span class="badge badge-success">
+                Active
+            </span>
+                                        </div>
+
+                                        <hr>
+
+                                        <div class="d-flex justify-content-between mb-3">
+            <span>
+                <i class="fas fa-shield-alt mr-2"></i>
+                Two-Factor Authentication
+            </span>
+
+                                            <span class="badge badge-success">
+                Enabled
+            </span>
+                                        </div>
+
+                                        <hr>
+
+                                        <div class="d-flex justify-content-between mb-3">
+            <span>
+                <i class="fas fa-envelope-open mr-2"></i>
+                Email Verified
+            </span>
+
+                                            <span class="badge badge-success">
+                Verified
+            </span>
+                                        </div>
+
+                                        <hr>
+
+                                        <div class="d-flex justify-content-between mb-4">
+            <span>
+                <i class="fas fa-clock mr-2"></i>
+                Password Last Changed
+            </span>
+
+                                            <span>
+                May 1, 2025
+            </span>
+                                        </div>
+
+                                        <button class="btn btn-outline-warning btn-block">
+                                            <i class="fas fa-lock mr-2"></i>
+                                            Change Password
+                                        </button>
+
+                                    </div>
+
+                                </div>
+                        </div>
+
+                            <div class="row mb-4 mt-4">
+
+                                <div class="col-lg-12">
+
+                                    <!-- Recent Activity Card -->
+                                    <div class="card shadow-sm border-0">
+
+                                        <div class="card-body">
+
+                                            <h4 class="font-weight-bold text-warning mb-4">
+                                                Recent Activity
+                                            </h4>
+
+                                            <div class="row">
+
+                                                <!-- Activity 1 -->
+
+                                                <div class="col-md-3">
+
+                                                    <div class="d-flex">
+
+                                                        <div class="mr-3">
+                                                            <i class="fas fa-file-alt fa-2x text-success"></i>
+                                                        </div>
+
+                                                        <div>
+
+                                                            <small class="text-muted">
+                                                                Created a new post
+                                                            </small>
+
+                                                            <br>
+
+                                                            <a href="#">
+                                                                Getting Started with Spring Boot
+                                                            </a>
+
+                                                            <br>
+
+                                                            <small class="text-muted">
+                                                                2 hours ago
+                                                            </small>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <!-- Activity 2 -->
+
+                                                <div class="col-md-3">
+
+                                                    <div class="d-flex">
+
+                                                        <div class="mr-3">
+                                                            <i class="fas fa-file-alt fa-2x text-success"></i>
+                                                        </div>
+
+                                                        <div>
+
+                                                            <small class="text-muted">
+                                                                Created a new post
+                                                            </small>
+
+                                                            <br>
+
+                                                            <a href="#">
+                                                                Getting Started with Spring Boot
+                                                            </a>
+
+                                                            <br>
+
+                                                            <small class="text-muted">
+                                                                2 hours ago
+                                                            </small>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <!-- Activity 3 -->
+
+                                                <div class="col-md-3">
+
+                                                    <div class="d-flex">
+
+                                                        <div class="mr-3">
+                                                            <i class="fas fa-file-alt fa-2x text-success"></i>
+                                                        </div>
+
+                                                        <div>
+
+                                                            <small class="text-muted">
+                                                                Created a new post
+                                                            </small>
+
+                                                            <br>
+
+                                                            <a href="#">
+                                                                Getting Started with Spring Boot
+                                                            </a>
+
+                                                            <br>
+
+                                                            <small class="text-muted">
+                                                                2 hours ago
+                                                            </small>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <!-- Activity 4 -->
+
+                                                <div class="col-md-3">
+
+                                                    <div class="d-flex">
+
+                                                        <div class="mr-3">
+                                                            <i class="fas fa-file-alt fa-2x text-success"></i>
+                                                        </div>
+
+                                                        <div>
+
+                                                            <small class="text-muted">
+                                                                Created a new post
+                                                            </small>
+
+                                                            <br>
+
+                                                            <a href="#">
+                                                                Getting Started with Spring Boot
+                                                            </a>
+
+                                                            <br>
+
+                                                            <small class="text-muted">
+                                                                2 hours ago
+                                                            </small>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
 
                     </form>
 
