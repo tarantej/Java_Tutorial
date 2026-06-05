@@ -276,4 +276,15 @@ public class DashboardController {
         
         return "Dashboard/blank";
     }
+
+    @GetMapping("/activity-log")
+    public String ActivityLog(HttpSession session)
+    {
+        if(session.getAttribute("username") == null)
+        {
+            return "redirect:/login";
+        }
+
+        return "Dashboard/activity-log";
+    }
 }
