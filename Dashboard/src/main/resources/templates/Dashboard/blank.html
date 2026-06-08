@@ -30,24 +30,26 @@
             </div>
             <!-- End of Main Content -->
 
-            <div th:replace="~{Dashboard/fragments/footer :: footer}"></div>
+            <!-- Copyright -->
+            <div th:replace="~{Dashboard/fragments/copyright :: copyright}"></div>
+            <!-- End of Copyright -->
+
         </div>
         <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
-        <div th:replace="~{Dashboard/fragments/scrolltotop :: scrolltotop}"></div>
-        <div th:replace="~{Dashboard/fragments/logout-modal :: logout-modal}"></div>
 
-    <!-- Bootstrap core JavaScript-->
-        <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
-        <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <!-- Scroll to Top Button-->
+    <div th:replace="~{Dashboard/fragments/scrolltotop :: scrolltotop}"></div>
 
-    <!-- Core plugin JavaScript-->
-        <script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+    <!-- Logout Modal-->
+    <div th:replace="~{Dashboard/fragments/logout-modal :: logout-modal}"></div>
 
-    <!-- Custom scripts for all pages-->
-        <script th:src="@{/js/sb-admin-2.min.js}"></script>
+    <!-- Footer -->
+    <div th:replace="~{Dashboard/fragments/footer :: footer}"></div>
+    <!-- End of Footer -->
+
 </body>
 
 </html>
