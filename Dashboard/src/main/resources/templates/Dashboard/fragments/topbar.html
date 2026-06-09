@@ -7,18 +7,11 @@
     </button>
 
     <!-- Topbar Search -->
-    <form
-            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-        <div class="input-group">
-            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                   aria-label="Search" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search fa-sm"></i>
-                </button>
-            </div>
-        </div>
-    </form>
+    <div class="cms-search">
+        <i class="bi bi-search"></i>
+        <input type="text"
+               placeholder="Search for posts, pages, users..." />
+    </div>
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
@@ -39,7 +32,7 @@
                                aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="button">
-                                <i class="fas fa-search fa-sm"></i>
+                                <i class="bi bi-search"></i>
                             </button>
                         </div>
                     </div>
@@ -51,9 +44,9 @@
         <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell fa-fw"></i>
+                <i class="bi bi-bell"></i>
                 <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
+                <span class="notification-badge">12</span>
             </a>
             <!-- Dropdown - Alerts -->
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -64,7 +57,7 @@
                 <a class="dropdown-item d-flex align-items-center" href="#">
                     <div class="mr-3">
                         <div class="icon-circle bg-primary">
-                            <i class="fas fa-file-alt text-white"></i>
+                            <i class="bi bi-files-alt text-white"></i>
                         </div>
                     </div>
                     <div>
@@ -86,7 +79,7 @@
                 <a class="dropdown-item d-flex align-items-center" href="#">
                     <div class="mr-3">
                         <div class="icon-circle bg-warning">
-                            <i class="fas fa-exclamation-triangle text-white"></i>
+                            <i class="bi bi-exclamation-triangle text-white"></i>
                         </div>
                     </div>
                     <div>
@@ -102,9 +95,9 @@
         <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
+                <i class="bi bi-envelope"></i>
                 <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">7</span>
+                <span class="notification-badge">7</span>
             </a>
             <!-- Dropdown - Messages -->
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -172,7 +165,8 @@
                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><span th:text="${session.username}"></span></span>
                 <img class="img-profile rounded-circle"
-                     th:src="@{/img/undraw_profile.svg}">
+                     th:src="${profile_picture != null} ? @{'/uploads/profile/'
+                                                + ${profile_picture}} : @{'/img/user-avatar-3.png'}">
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

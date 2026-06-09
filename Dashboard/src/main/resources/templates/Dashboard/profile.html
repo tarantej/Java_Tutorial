@@ -50,19 +50,24 @@
                                     <div class="card-body">
 
                                         <div class="row mb-4">
-                                            <div class="col-md-4 mt-3 text-center">
-                                                <img th:src="${profile_picture != null} ? @{'/uploads/profile/'
-                                                + ${profile_picture}} : @{'/img/user-avatar.png'}"
+                                            <div class="col-md-4 mt-3 text-center border-end profile-divider">
+                                                <div class="profile-avatar-wrapper">
+                                                    <img th:src="${profile_picture != null} ? @{'/uploads/profile/'
+                                                + ${profile_picture}} : @{'/img/user-avatar-3.png'}"
                                                      class="rounded-circle shadow"
                                                      style="width:180px;
                                              height:180px;
                                              object-fit:cover;
                                              border:4px solid #ff6b00;">
+                                                    <button class="avatar-camera-btn">
+                                                        <i class="bi bi-camera-fill"></i>
+                                                    </button>
+                                                </div>
                                                 <div class="mt-4">
                                                     <label for="profilePicture"
-                                                           class="btn btn-outline-warning">
+                                                           class="btn btn-outline-primary">
 
-                                                        <i class="fas fa-upload mr-2"></i>
+                                                        <i class="bi bi-upload ms-2"></i>
 
                                                         Upload New Photo
 
@@ -83,29 +88,29 @@
                                                     Admin
                                                 </h2>
 
-                                                <span class="badge badge-warning px-3 py-2 mb-3">
+                                                <span class="badge-admin px-3 py-2 mb-3">
                             Administrator
                         </span>
 
                                                 <div class="mt-4">
 
                                                     <p>
-                                                        <i class="fas fa-envelope mr-2"></i>
+                                                        <i class="bi bi-envelope ms-2"></i>
                                                         admin@example.com
                                                     </p>
 
                                                     <p>
-                                                        <i class="fas fa-calendar-alt mr-2"></i>
+                                                        <i class="bi bi-calendar-event ms-2"></i>
                                                         Joined January 10, 2025
                                                     </p>
 
                                                     <p>
-                                                        <i class="fas fa-clock mr-2"></i>
+                                                        <i class="bi bi-clock ms-2"></i>
                                                         Last Login: May 18, 2025
                                                     </p>
 
                                                     <p>
-                                                        <i class="fas fa-map-marker-alt mr-2"></i>
+                                                        <i class="bi bi-geo-alt ms-2"></i>
                                                         New Delhi, India
                                                     </p>
 
@@ -135,7 +140,7 @@
                                             <h4 class="font-weight-bold">About Me</h4>
 
                                             <button class="btn btn-outline-warning btn-sm">
-                                                <i class="fas fa-pen"></i>
+                                                <i class="bi bi-pen"></i>
                                             </button>
                                         </div>
 
@@ -151,7 +156,7 @@
 
                                             <div class="col-6">
                                                 <div class="mb-2">
-                                                    <i class="fas fa-file-alt fa-2x text-warning"></i>
+                                                    <i class="bi bi-file-post text-warning"></i>
                                                 </div>
 
                                                 <h4 class="font-weight-bold">128</h4>
@@ -163,7 +168,7 @@
 
                                             <div class="col-6">
                                                 <div class="mb-2">
-                                                    <i class="far fa-comment fa-2x text-warning"></i>
+                                                    <i class="bi bi-chat-dots-fill text-warning fs-1"></i>
                                                 </div>
 
                                                 <h4 class="font-weight-bold">342</h4>
@@ -177,9 +182,9 @@
 
                                         <hr>
 
-                                        <button class="btn btn-outline-warning btn-block">
+                                        <button class="btn btn-outline-primary btn-block">
                                             View My Posts
-                                            <i class="fas fa-arrow-right ml-2"></i>
+                                            <i class="bi bi-arrow-right ms-2"></i>
                                         </button>
 
                                     </div>
@@ -198,17 +203,17 @@
 
                                         <div class="d-flex justify-content-between align-items-center mb-4">
 
-                                            <h4 class="font-weight-bold text-warning">
+                                            <h4 class="section-title">
                                                 Personal Information
                                             </h4>
 
                                             <button class="btn btn-outline-warning btn-sm">
-                                                <i class="fas fa-pen"></i>
+                                                <i class="bi bi-pen"></i>
                                             </button>
 
                                         </div>
 
-                                        <table class="table table-borderless">
+                                        <table class="table">
 
                                             <tr>
                                                 <td width="35%">
@@ -257,7 +262,7 @@
 
                                         </table>
 
-                                        <button class="btn btn-warning">
+                                        <button class="btn btn-primary">
                                             Edit Information
                                         </button>
 
@@ -272,75 +277,75 @@
 
                                     <div class="card-body">
 
-                                        <h4 class="font-weight-bold text-warning mb-4">
+                                        <h4 class="section-title mb-4">
                                             Account Summary
                                         </h4>
 
-                                        <div class="d-flex justify-content-between mb-3">
-            <span>
-                <i class="fas fa-user-shield mr-2"></i>
-                User Role
-            </span>
+                                        <div class="account-summary-row">
+                                            <span>
+                                                <i class="bi bi-person-badge account-icon"></i>
+                                                User Role
+                                            </span>
 
-                                            <span class="badge badge-warning">
-                Administrator
-            </span>
+                                            <span class="badge-admin">
+                                                Administrator
+                                            </span>
                                         </div>
 
                                         <hr>
 
-                                        <div class="d-flex justify-content-between mb-3">
-            <span>
-                <i class="fas fa-user-check mr-2"></i>
-                Account Status
-            </span>
+                                        <div class="account-summary-row">
+                                            <span>
+                                                <i class="bi bi-person-check account-icon"></i>
+                                                Account Status
+                                            </span>
 
                                             <span class="badge badge-success">
-                Active
-            </span>
+                                                Active
+                                            </span>
                                         </div>
 
                                         <hr>
 
-                                        <div class="d-flex justify-content-between mb-3">
-            <span>
-                <i class="fas fa-shield-alt mr-2"></i>
-                Two-Factor Authentication
-            </span>
+                                        <div class="account-summary-row">
+                                            <span>
+                                                <i class="bi bi-shield-lock ms-2 account-icon"></i>
+                                                Two-Factor Authentication
+                                            </span>
 
                                             <span class="badge badge-success">
-                Enabled
-            </span>
+                                                Enabled
+                                            </span>
                                         </div>
 
                                         <hr>
 
-                                        <div class="d-flex justify-content-between mb-3">
-            <span>
-                <i class="fas fa-envelope-open mr-2"></i>
-                Email Verified
-            </span>
+                                        <div class="account-summary-row">
+                                            <span>
+                                                <i class="bi bi-envelope-check ms-2 account-icon"></i>
+                                                Email Verified
+                                            </span>
 
                                             <span class="badge badge-success">
-                Verified
-            </span>
+                                                Verified
+                                            </span>
                                         </div>
 
                                         <hr>
 
-                                        <div class="d-flex justify-content-between mb-4">
-            <span>
-                <i class="fas fa-clock mr-2"></i>
-                Password Last Changed
-            </span>
+                                        <div class="account-summary-row">
+                                            <span>
+                                                <i class="bi bi-key ms-2 account-icon"></i>
+                                                Password Last Changed
+                                            </span>
 
                                             <span>
-                May 1, 2025
-            </span>
+                                                May 1, 2025
+                                            </span>
                                         </div>
 
-                                        <button class="btn btn-outline-warning btn-block">
-                                            <i class="fas fa-lock mr-2"></i>
+                                        <button class="btn btn-outline-primary btn-block">
+                                            <i class="bi bi-key ms-2 account-icon"></i>
                                             Change Password
                                         </button>
 
