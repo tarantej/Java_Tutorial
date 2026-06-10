@@ -161,7 +161,7 @@ public class DashboardController {
     }
 
     @PostMapping("/profile")
-    public String UpdateProfile(HttpSession session,
+    public String UserUpdateProfile(HttpSession session,
 //                                @RequestParam String first_name,
 //                                @RequestParam String last_name,
 //                                @RequestParam String email,
@@ -256,16 +256,29 @@ public class DashboardController {
         return "redirect:/profile";
     }
 
-    @GetMapping("/settings")
-    public String UserSettings(HttpSession session)
+    @GetMapping("/account-settings")
+    public String UserAccountSettings(HttpSession session)
     {
         if(session.getAttribute("username") == null)
         {
             return "redirect:/login";
         }
 
-        return "Dashboard/settings";
+        return "Dashboard/account-settings";
     }
+
+    @GetMapping("/system-settings")
+    public String UserSystemSettings(HttpSession session)
+    {
+        if(session.getAttribute("username") == null)
+        {
+            return "redirect:/login";
+        }
+
+        return "Dashboard/system-settings";
+    }
+
+
     @GetMapping("/blank")
     public String BlankPage(HttpSession session)
     {
@@ -278,7 +291,7 @@ public class DashboardController {
     }
 
     @GetMapping("/activity-log")
-    public String ActivityLog(HttpSession session)
+    public String UserActivityLog(HttpSession session)
     {
         if(session.getAttribute("username") == null)
         {
