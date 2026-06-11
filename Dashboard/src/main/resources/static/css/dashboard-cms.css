@@ -70,6 +70,10 @@ a.text-danger:hover, a.text-danger:focus {
     color: #be2617 !important;
 }
 
+.text-orange{
+    color:#ff6b00;
+}
+
 .text-light {
     color: #f8f9fc !important;
 }
@@ -436,7 +440,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .text-primary {
-    background: #ff6b00!important;
+    color: #ff6b00!important;
 }
 
 /* ---------- Dashboard Stat Cards ---------- */
@@ -507,6 +511,33 @@ a.text-dark:hover, a.text-dark:focus {
 .form-select:focus {
     border-color: #ff6b00;
     box-shadow: 0 0 0 .2rem rgba(255,107,0,.15);
+}
+
+.form-switch .form-check-input {
+    width: 3.25rem;
+    height: 1.75rem;
+    cursor: pointer;
+    transition: all .2s ease;
+    margin-top: -0.5rem;
+    margin-left: -3rem;
+}
+
+.form-switch .form-check-input:checked {
+    background-color: #ff6b00;
+    border-color: #ff6b00;
+}
+
+.form-switch .form-check-input:focus {
+    box-shadow: 0 0 0 .2rem rgba(255,107,0,.15);
+}
+
+.settings-active .fw-bold{
+    color:#ff6b00!important;
+}
+
+.settings-active{
+    background-color: rgba(255,107,0,.08)!important;
+    border-left: 3px solid #ff6b00;
 }
 
 /* ---------- Badges ---------- */

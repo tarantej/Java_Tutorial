@@ -40,12 +40,12 @@
 
                                     <div class="list-group list-group-flush">
 
-                                        <a href="#" class="list-group-item list-group-item-action border-0 rounded bg-light mb-2">
+                                        <a href="#" onclick="showSection('account-section',this)" class="list-group-item list-group-item-action border-0 rounded settings-active mb-2">
                                             <div class="d-flex align-items-start">
-                                                <i class="fas fa-user text-warning me-3 mt-1"></i>
+                                                <i class="bi bi-user text-primary me-3 mt-1"></i>
 
                                                 <div>
-                                                    <div class="fw-bold text-warning">
+                                                    <div class="fw-bold" id="account-settings">
                                                         Account
                                                     </div>
 
@@ -56,12 +56,12 @@
                                             </div>
                                         </a>
 
-                                        <a href="#" class="list-group-item list-group-item-action border-0 mb-2">
+                                        <a href="#" onclick="showSection('security-section',this)" class="list-group-item list-group-item-action border-0 mb-2">
                                             <div class="d-flex align-items-start">
-                                                <i class="fas fa-shield-alt me-3 mt-1"></i>
+                                                <i class="bi bi-shield-check me-3 mt-1"></i>
 
                                                 <div>
-                                                    <div class="fw-bold">
+                                                    <div class="fw-bold" id="security-settings">
                                                         Security
                                                     </div>
 
@@ -72,12 +72,12 @@
                                             </div>
                                         </a>
 
-                                        <a href="#" class="list-group-item list-group-item-action border-0 mb-2">
+                                        <a href="#" onclick="showSection('notifications-section',this)" class="list-group-item list-group-item-action border-0 mb-2">
                                             <div class="d-flex align-items-start">
-                                                <i class="fas fa-bell me-3 mt-1"></i>
+                                                <i class="bi bi-bell me-3 mt-1"></i>
 
                                                 <div>
-                                                    <div class="fw-bold">
+                                                    <div class="fw-bold" id="notifications-settings">
                                                         Notifications
                                                     </div>
 
@@ -88,44 +88,44 @@
                                             </div>
                                         </a>
 
-                                        <a href="#" class="list-group-item list-group-item-action border-0 mb-2">
+<!--                                        <a href="#" class="list-group-item list-group-item-action border-0 mb-2">-->
+<!--                                            <div class="d-flex align-items-start">-->
+<!--                                                <i class="bi bi-palette me-3 mt-1"></i>-->
+
+<!--                                                <div>-->
+<!--                                                    <div class="fw-bold">-->
+<!--                                                        Appearance-->
+<!--                                                    </div>-->
+
+<!--                                                    <small class="text-muted">-->
+<!--                                                        Customize your dashboard-->
+<!--                                                    </small>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </a>-->
+
+<!--                                        <a href="#" class="list-group-item list-group-item-action border-0 mb-2">-->
+<!--                                            <div class="d-flex align-items-start">-->
+<!--                                                <i class="bi bi-credit-card me-3 mt-1"></i>-->
+
+<!--                                                <div>-->
+<!--                                                    <div class="fw-bold">-->
+<!--                                                        Billing-->
+<!--                                                    </div>-->
+
+<!--                                                    <small class="text-muted">-->
+<!--                                                        Manage your subscription-->
+<!--                                                    </small>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </a>-->
+
+                                        <a href="#" onclick="showSection('danger-zone-section',this)" class="list-group-item list-group-item-action border-0 text-danger">
                                             <div class="d-flex align-items-start">
-                                                <i class="fas fa-palette me-3 mt-1"></i>
+                                                <i class="bi bi-exclamation-triangle me-3 mt-1"></i>
 
                                                 <div>
-                                                    <div class="fw-bold">
-                                                        Appearance
-                                                    </div>
-
-                                                    <small class="text-muted">
-                                                        Customize your dashboard
-                                                    </small>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                        <a href="#" class="list-group-item list-group-item-action border-0 mb-2">
-                                            <div class="d-flex align-items-start">
-                                                <i class="fas fa-credit-card me-3 mt-1"></i>
-
-                                                <div>
-                                                    <div class="fw-bold">
-                                                        Billing
-                                                    </div>
-
-                                                    <small class="text-muted">
-                                                        Manage your subscription
-                                                    </small>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                        <a href="#" class="list-group-item list-group-item-action border-0 text-danger">
-                                            <div class="d-flex align-items-start">
-                                                <i class="fas fa-exclamation-triangle me-3 mt-1"></i>
-
-                                                <div>
-                                                    <div class="fw-bold">
+                                                    <div class="fw-bold" id="danger-zone-settings">
                                                         Danger Zone
                                                     </div>
 
@@ -149,7 +149,7 @@
 
                             <div class="card shadow-sm border-0">
 
-                                <div class="card-body">
+                                <div class="card-body settings-section" id="account-section">
 
                                     <div class="d-flex justify-content-between align-items-center mb-4">
 
@@ -165,8 +165,8 @@
 
                                         </div>
 
-                                        <button type="button" class="btn btn-outline-warning">
-                                            <i class="fas fa-pen"></i>
+                                        <button type="button" class="btn btn-outline-primary">
+                                            <i class="bi bi-pen"></i>
                                         </button>
 
                                     </div>
@@ -283,9 +283,9 @@
 
                                         </div>
 
-                                        <button type="submit" class="btn btn-warning">
+                                        <button type="submit" class="btn btn-primary">
 
-                                            <i class="fas fa-save me-2"></i>
+                                            <i class="bi bi-save me-2"></i>
 
                                             Save Changes
 
@@ -297,130 +297,152 @@
 
                             </div>
 
-                        </div>
+                            <!-- Security Section -->
 
-                    </div>
+                            <div id="security-section" class="settings-section d-none">
 
-                    <!-- Row 2 -->
-                    <div class="row">
+                                <div class="card shadow-sm border-0">
+                                    <div class="card-body">
 
-                        <div class="col-lg-12">
+                                        <h4 class="fw-bold mb-4">
+                                            Security Settings
+                                        </h4>
 
-                            <div class="card shadow-sm border-0">
-
-                                <div class="card-body">
-
-                                    <h4 class="fw-bold mb-1">
-                                        Email Preferences
-                                    </h4>
-
-                                    <p class="text-muted mb-4">
-                                        Choose which emails you want to receive from us.
-                                    </p>
-
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-
-                                            <div class="d-flex justify-content-between align-items-center mb-4">
-
-                                                <div>
-
-                                                    <div class="fw-semibold">
-                                                        Product Updates
-                                                    </div>
-
-                                                    <small class="text-muted">
-                                                        Receive updates about new features and improvements.
-                                                    </small>
-
-                                                </div>
-
-                                                <div class="form-check form-switch">
-
-                                                    <input
-                                                            class="form-check-input"
-                                                            type="checkbox"
-                                                            id="productUpdates">
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="d-flex justify-content-between align-items-center">
-
-                                                <div>
-
-                                                    <div class="fw-semibold">
-                                                        Weekly Summary
-                                                    </div>
-
-                                                    <small class="text-muted">
-                                                        Get a weekly summary of your activity.
-                                                    </small>
-
-                                                </div>
-
-                                                <div class="form-check form-switch">
-
-                                                    <input
-                                                            class="form-check-input"
-                                                            type="checkbox"
-                                                            id="weeklySummary">
-
-                                                </div>
-
-                                            </div>
-
+                                        <div class="mb-3">
+                                            <label class="form-label">Current Password</label>
+                                            <input type="password" class="form-control">
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">New Password</label>
+                                            <input type="password" class="form-control">
+                                        </div>
 
-                                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <div class="mb-4">
+                                            <label class="form-label">Confirm Password</label>
+                                            <input type="password" class="form-control">
+                                        </div>
 
-                                                <div>
+                                        <button class="btn btn-primary">
+                                            Update Password
+                                        </button>
 
-                                                    <div class="fw-semibold">
-                                                        Marketing Emails
+                                    </div>
+                                </div>
+
+                            <!--  End Security Settings Section  -->
+                            </div>
+
+                            <!--  Notification Settings -->
+                            <div id="notifications-section" class="settings-section d-none">
+
+                                <div class="card shadow-sm border-0">
+                                    <div class="card-body">
+
+                                        <h4 class="fw-bold mb-4">
+                                            Notification Preferences
+                                        </h4>
+
+                                        <p class="text-muted mb-4">
+                                            Choose which emails you want to receive from us.
+                                        </p>
+
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+
+                                                <div class="d-flex justify-content-between align-items-center mb-4">
+
+                                                    <div>
+
+                                                        <div class="fw-semibold">
+                                                            Product Updates
+                                                        </div>
+
+                                                        <small class="text-muted">
+                                                            Receive updates about new features and improvements.
+                                                        </small>
+
                                                     </div>
 
-                                                    <small class="text-muted">
-                                                        Receive emails about new products and offers.
-                                                    </small>
+                                                    <div class="form-check form-switch">
+
+                                                        <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                id="productUpdates" checked>
+
+                                                    </div>
 
                                                 </div>
 
-                                                <div class="form-check form-switch">
+                                                <div class="d-flex justify-content-between align-items-center">
 
-                                                    <input
-                                                            class="form-check-input"
-                                                            type="checkbox"
-                                                            id="marketingEmails">
+                                                    <div>
+
+                                                        <div class="fw-semibold">
+                                                            Weekly Summary
+                                                        </div>
+
+                                                        <small class="text-muted">
+                                                            Get a weekly summary of your activity.
+                                                        </small>
+
+                                                    </div>
+
+                                                    <div class="form-check form-switch">
+
+                                                        <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                id="weeklySummary" checked>
+
+                                                    </div>
 
                                                 </div>
 
                                             </div>
 
-                                            <div class="d-flex justify-content-between align-items-center">
-
-                                                <div>
-
-                                                    <div class="fw-semibold">
-                                                        Security Alerts
+                                            <div class="col-md-6">
+                                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                                    <div>
+                                                        <div class="fw-semibold">
+                                                            Marketing Emails
+                                                        </div>
+                                                        <small class="text-muted">
+                                                            Receive emails about new products and offers.
+                                                        </small>
                                                     </div>
-
-                                                    <small class="text-muted">
-                                                        Important security updates about your account.
-                                                    </small>
-
+                                                    <div class="form-check form-switch">
+                                                        <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                id="marketingEmails" checked>
+                                                    </div>
                                                 </div>
 
-                                                <div class="form-check form-switch">
+                                                <div class="d-flex justify-content-between align-items-center">
 
-                                                    <input
-                                                            class="form-check-input"
-                                                            type="checkbox"
-                                                            id="securityAlerts">
+                                                    <div>
+
+                                                        <div class="fw-semibold">
+                                                            Security Alerts
+                                                        </div>
+
+                                                        <small class="text-muted">
+                                                            Important security updates about your account.
+                                                        </small>
+
+                                                    </div>
+
+                                                    <div class="form-check form-switch">
+
+                                                        <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                id="securityAlerts" checked>
+
+                                                    </div>
 
                                                 </div>
 
@@ -429,11 +451,51 @@
                                         </div>
 
                                     </div>
-
                                 </div>
 
+                                <!-- End Notification Settings Section -->
                             </div>
 
+                            <!-- Danger Zone Settings  -->
+
+                            <div id="danger-zone-section" class="settings-section d-none">
+
+                                <div class="card shadow-sm border-0 border-danger">
+
+                                    <div class="card-body">
+
+                                        <h4 class="text-danger fw-bold">
+                                            Danger Zone
+                                        </h4>
+
+                                        <p class="text-muted">
+                                            These actions are irreversible.
+                                        </p>
+
+                                        <div class="mb-3">
+                                            <button class="btn btn-outline-warning">
+                                                Export My Data
+                                            </button>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <button class="btn btn-outline-danger">
+                                                Deactivate Account
+                                            </button>
+                                        </div>
+
+                                        <button class="btn btn-danger">
+                                            Delete Account
+                                        </button>
+
+                                    </div>
+                                </div>
+
+                                <!-- End Danger Zone Settings Section -->
+                            </div>
+
+
+                        <!-- End .col-lg-8 -->
                         </div>
 
                     </div>
@@ -462,6 +524,28 @@
     <!-- Footer -->
     <div th:replace="~{Dashboard/fragments/footer :: footer}"></div>
     <!-- End of Footer -->
+
+<!-- Account Settings Section Toggle -->
+
+    <script>
+        function showSection(sectionId, menuItem) {
+
+            document.querySelectorAll('.settings-section')
+                .forEach(section => {
+                    section.classList.add('d-none');
+                });
+
+            document.querySelectorAll('.list-group-item')
+                .forEach(item => {
+                    item.classList.remove('settings-active');
+                });
+
+            document.getElementById(sectionId)
+                .classList.remove('d-none');
+
+            menuItem.classList.add('settings-active');
+        }
+    </script>
 
 </body>
 
