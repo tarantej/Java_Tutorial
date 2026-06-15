@@ -241,9 +241,9 @@ a.text-dark:hover, a.text-dark:focus {
     transition: all .2s ease;
 }
 
-.sidebar .nav-link:hover i,
-.sidebar .nav-item.active .nav-link i {
-    color: #ff6b00;
+.sidebar .nav-link:hover i:hover,
+.sidebar .nav-item.active .nav-item:hover  .nav-link i:hover .bi:hover{
+    color: #ff6b00!important;
 }
 
 .sidebar-section-title {
@@ -267,12 +267,12 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .sidebar .nav-link:hover {
-    background: rgba(255,107,0,.08);
+    /*background: rgba(255,107,0,.08);*/
     color: #ff6b00;
 }
 
 .sidebar .nav-item.active .nav-link {
-    background: #fff4ec;
+    /*background: #fff4ec;*/
     color: #ff6b00 !important;
     border-left: 3px solid #ff6b00;
     border-radius: 0 10px 10px 0;
@@ -288,6 +288,10 @@ a.text-dark:hover, a.text-dark:focus {
 .collapse-item:hover {
     color: #ff6b00;
     text-decoration: none;
+}
+
+.sidebar-dark hr.sidebar-divider {
+    border-top: 1px solid grey;
 }
 
 /* ---------- Topbar ---------- */

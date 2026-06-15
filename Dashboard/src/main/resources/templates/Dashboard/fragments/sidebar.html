@@ -21,111 +21,266 @@
         <!-- Divider -->
         <hr class="sidebar-divider">
 
-        <!-- Pages -->
-        <!-- CONTENT -->
+
+        <!-- Content -->
         <div class="sidebar-heading">
             Content
         </div>
 
         <li class="nav-item">
-            <a class="nav-link">
-                <i class="bi bi-file-earmark-text"></i>
-                <span>Posts</span>
-            </a>
-        </li>
 
-        <li class="nav-item">
-            <a class="nav-link">
-                <i class="bi bi-file-earmark"></i>
-                <span>Pages</span>
-            </a>
-        </li>
+            <a class="nav-link collapsed"
+               href="#"
+               data-bs-toggle="collapse"
+               data-bs-target="#collapseContent">
 
-        <li class="nav-item">
-            <a class="nav-link">
                 <i class="bi bi-folder"></i>
-                <span>Categories</span>
+                <span>Content</span>
+
+                <i class="bi bi-chevron-right ms-auto"></i>
             </a>
-        </li>
 
-        <li class="nav-item">
-            <a class="nav-link">
-                <i class="bi bi-tags"></i>
-                <span>Tags</span>
-            </a>
-        </li>
+            <div id="collapseContent"
+                 class="collapse"
+                 data-bs-parent="#accordionSidebar">
 
-        <li class="nav-item">
-            <a class="nav-link">
-                <i class="bi bi-images"></i>
-                <span>Media Library</span>
-            </a>
-        </li>
+                <div class="collapse-inner">
 
-        <li class="nav-item">
-            <a class="nav-link">
-                <i class="bi bi-chat-dots"></i>
-                <span>Comments</span>
-            </a>
-        </li>
+                    <!-- Posts -->
 
-        <hr class="sidebar-divider">
+                    <div class="submenu-item">
 
-        <!-- USERS -->
-        <div class="sidebar-heading">
-            Users
-        </div>
+                        <a class="nav-link collapsed"
+                           href="#"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#collapsePosts">
 
-        <li class="nav-item">
-            <a class="nav-link">
-                <i class="bi bi-people"></i>
-                <span>Users</span>
-            </a>
-        </li>
+                            <span>Posts</span>
 
-        <li class="nav-item">
-            <a class="nav-link">
-                <i class="bi bi-shield-lock"></i>
-                <span>Roles & Permissions</span>
-            </a>
-        </li>
+                            <i class="bi bi-chevron-right ms-auto"></i>
+                        </a>
 
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/activity-log}">
-                <i class="bi bi-clock-history"></i>
-                <span>Activity Logs</span>
-            </a>
-        </li>
+                        <div id="collapsePosts" class="collapse">
 
-        <hr class="sidebar-divider">
+                            <a class="collapse-item" href="#">
+                                All Posts
+                            </a>
 
-        <!-- SETTINGS -->
-        <div class="sidebar-heading">
-            Settings
-        </div>
+                            <a class="collapse-item" href="#">
+                                Add Post
+                            </a>
 
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/profile}">
-                <i class="bi bi-person"></i>
-                <span>Profile</span>
-            </a>
-        </li>
+                            <a class="collapse-item" href="#">
+                                Comments
+                            </a>
 
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/account-settings}">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-            </a>
-        </li>
+                        </div>
 
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/system-settings}">
-                <i class="bi bi-sliders"></i>
-                <span>System Settings</span>
-            </a>
-        </li>
+                    </div>
 
-        <hr class="sidebar-divider">
+                    <!-- Pages -->
+
+                    <div class="submenu-item">
+
+                        <a class="nav-link collapsed"
+                           href="#"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#collapsePages">
+
+                            <span>Pages</span>
+
+                            <i class="bi bi-chevron-right ms-auto"></i>
+                        </a>
+
+                        <div id="collapsePages" class="collapse">
+
+                            <a class="collapse-item" href="#">
+                                All Pages
+                            </a>
+
+                            <a class="collapse-item" href="#">
+                                Add Page
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Projects -->
+
+                    <div class="submenu-item">
+
+                        <a class="nav-link collapsed"
+                           href="#"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#collapseProjects">
+
+                            <span>Projects</span>
+
+                            <i class="bi bi-chevron-right ms-auto"></i>
+                        </a>
+
+                        <div id="collapseProjects" class="collapse">
+
+                            <a class="collapse-item" href="#">
+                                All Projects
+                            </a>
+
+                            <a class="collapse-item" href="#">
+                                Add Project
+                            </a>
+
+                            <a class="collapse-item" href="#">
+                                Galleries
+                            </a>
+
+                            <a class="collapse-item" href="#">
+                                Add Gallery
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Categories -->
+
+                    <a class="collapse-item" href="#">
+                        Categories
+                    </a>
+
+                    <!-- Tags -->
+
+                    <a class="collapse-item" href="#">
+                        Tags
+                    </a>
+
+                    <!-- Media Library -->
+
+                    <a class="collapse-item" href="#">
+                        Media Library
+                    </a>
+
+                    <!-- End .collapse-inner  -->
+                </div>
+
+                    <hr class="sidebar-divider">
+
+
+
+                    <li class="nav-item">
+
+                        <!-- Users -->
+                        <div class="sidebar-heading">
+                            Users
+                        </div>
+
+                        <a class="nav-link collapsed"
+                           href="#"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#collapseUsers">
+
+                            <i class="bi bi-people"></i>
+                            <span>Users</span>
+
+                            <i class="bi bi-chevron-right ms-auto"></i>
+                        </a>
+
+                        <div id="collapseUsers"
+                             class="collapse"
+                             data-bs-parent="#accordionSidebar">
+
+                            <div class="collapse-inner">
+
+                                <a class="collapse-item" href="#">
+                                    Users
+                                </a>
+
+                                <a class="collapse-item" href="#">
+                                    Add User
+                                </a>
+
+                                <a class="collapse-item" href="#">
+                                    Roles & Permissions
+                                </a>
+
+                                <a class="collapse-item" href="#">
+                                    Activity Logs
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </li>
+
+                    <hr class="sidebar-divider">
+
+                <!-- Settings -->
+                        <div class="sidebar-heading">
+                            Settings
+                        </div>
+
+
+                    <li class="nav-item">
+
+                        <a class="nav-link collapsed"
+                           href="#"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#collapseSettings">
+
+                            <i class="bi bi-gear"></i>
+                            <span>Settings</span>
+
+                            <i class="bi bi-chevron-right ms-auto"></i>
+                        </a>
+
+                        <div id="collapseSettings"
+                             class="collapse"
+                             data-bs-parent="#accordionSidebar">
+
+                            <div class="collapse-inner">
+
+                                <a class="collapse-item" href="#">
+                                    Profile
+                                </a>
+
+                                <a class="collapse-item" href="#">
+                                    Account Settings
+                                </a>
+
+                                <a class="collapse-item" href="#">
+                                    System Settings
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </li>
+
+
+                    <hr class="sidebar-divider">
+
+                    <!-- Logout -->
+
+                    <li class="nav-item">
+
+                        <a class="nav-link text-danger"
+                           href="#">
+
+                            <i class="bi bi-box-arrow-right"></i>
+
+                            <span>Logout</span>
+
+                        </a>
+
+                    </li>
+
+
+
+
+
+
 
         <!-- OTHER -->
 <!--        <div class="sidebar-heading">-->
