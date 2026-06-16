@@ -152,6 +152,14 @@ a.text-dark:hover, a.text-dark:focus {
     margin-bottom: 1.5rem;
 }
 
+
+/*--------- Breadcrumbs -------*/
+
+.breadcrumb-item.active
+{
+    color: #ff6b00;
+}
+
 /* ---------- Cards ---------- */
 
 .card {
@@ -307,6 +315,13 @@ a.text-dark:hover, a.text-dark:focus {
 
 .topbar .dropdown-toggle {
     color: #1d2b53;
+}
+
+.topbar .topbar-divider {
+    width: 0;
+    border-right: 1px solid #e3e6f0;
+    height: calc(4.375rem - 2rem);
+    margin: auto 6rem;
 }
 
 /* ---------- Topbar Search---------- */
