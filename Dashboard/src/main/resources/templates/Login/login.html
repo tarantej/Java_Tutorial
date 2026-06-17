@@ -18,7 +18,9 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/sb-admin-2.css}" rel="stylesheet">
+    <link th:href="@{/css/dashboard-cms.css}" rel="stylesheet">
 
 </head>
 
@@ -33,62 +35,141 @@
 
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
+
                         <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                        <div class="row g-0 auth-wrapper">
+
+                            <!-- Left Branding Panel -->
+                            <div class="col-lg-6 auth-brand-panel">
+
+                                <div class="auth-brand-content">
+
+                                    <img th:src="@{/img/logo-white.png}"
+                                         alt="Dashboard CMS"
+                                         class="auth-logo">
+
+<!--                                    <h2>Dashboard CMS</h2>-->
+
+                                    <p class="auth-tagline">
+                                        Manage • Analyze • Grow
+                                    </p>
+
+                                    <p class="auth-description">
+                                        A powerful and intuitive platform to manage your
+                                        content, users and analytics from one central dashboard.
+                                    </p>
+
+                                    <div class="tech-grid">
+
+                                        <div class="tech-card">
+                                            <i class="fab fa-java"></i>
+                                            <span>Java 25</span>
+                                        </div>
+
+                                        <div class="tech-card">
+                                            <i class="fas fa-leaf"></i>
+                                            <span>Spring Boot</span>
+                                        </div>
+
+                                        <div class="tech-card">
+                                            <i class="fas fa-file-code"></i>
+                                            <span>Thymeleaf</span>
+                                        </div>
+
+                                        <div class="tech-card">
+                                            <i class="fab fa-bootstrap"></i>
+                                            <span>Bootstrap 5</span>
+                                        </div>
+
+                                        <div class="tech-card">
+                                            <i class="fas fa-database"></i>
+                                            <span>PostgreSQL</span>
+                                        </div>
+
+                                        <div class="tech-card">
+                                            <i class="fas fa-box"></i>
+                                            <span>Maven</span>
+                                        </div>
+
                                     </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-lg-6 auth-form-panel">
+                                <div class="auth-form-content">
+                                    <h3>Welcome Back</h3>
+                                    <p class="text-muted">Sign in to Dashboard CMS</p>
                                     <div th:if="${error}" class="alert alert-danger">
 
                                         <span th:text="${error}"></span>
 
                                     </div>
-                                    <form th:action="@{/login}" method="post" class="user">
-<!--                                        <div class="form-group">-->
-<!--                                            <input type="email" class="form-control form-control-user"-->
-<!--                                                id="exampleInputEmail" aria-describedby="emailHelp"-->
-<!--                                                placeholder="Enter Email Address...">-->
-<!--                                        </div>-->
-                                        <div class="form-group">
-                                            <input type="text" class="form-control form-control-user"
-                                                   id="username" name="username" aria-describedby="emailHelp"
+                                    <form th:action="@{/login}" method="post">
+
+                                        <div class="mb-3">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="username"
+                                                   name="username"
                                                    placeholder="Username">
                                         </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="password" name="password" placeholder="Password">
+                                        <div class="mb-3">
+                                            <input type="password"
+                                                   class="form-control"
+                                                   id="password"
+                                                   name="password"
+                                                   placeholder="Password">
                                         </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
+
+                                        <div class="d-flex justify-content-between mb-4">
+
+                                            <div class="form-check">
+                                                <input class="form-check-input"
+                                                       type="checkbox"
+                                                       id="rememberMe">
+
+                                                <label class="form-check-label"
+                                                       for="rememberMe">
+                                                    Remember Me
+                                                </label>
                                             </div>
+                                            <a th:href="@{/forgot-password}">
+                                                Forgot Password?
+                                            </a>
+
                                         </div>
-                                        <button type="submit" class="btn btn-primary w-100">
-                                            Login
+                                        <button type="submit"
+                                                class="btn btn-primary w-100 auth-login-btn">
+                                            Sign In
                                         </button>
-<!--                                        <a th:href="@{/index}" class="btn btn-primary btn-user btn-block">-->
-<!--                                            Login-->
-<!--                                        </a>-->
-                                        <hr>
-                                        <a th:href="@{/index}" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a th:href="@{/index}" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>
+
                                     </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" th:href="@{/forgot-password}">Forgot Password?</a>
+
+                                    <div class="auth-divider">
+                                        <span>OR</span>
                                     </div>
-                                    <div class="text-center">
-                                        <a class="small" th:href="@{/register}">Create an Account!</a>
-                                    </div>
+
+                                    <button class="btn btn-outline-dark w-100 mb-2">
+                                        Continue with GitHub
+                                    </button>
+
+                                    <button class="btn btn-outline-danger w-100 mb-2">
+                                        Continue with Google
+                                    </button>
+
+                                    <button class="btn btn-outline-primary w-100">
+                                        Continue with Microsoft
+                                    </button>
+
+<!--                                    <div class="text-center">-->
+<!--                                        <a class="small" th:href="@{/forgot-password}">Forgot Password?</a>-->
+<!--                                    </div>-->
+<!--                                    <div class="text-center">-->
+<!--                                        <a class="small" th:href="@{/register}">Create an Account!</a>-->
+<!--                                    </div>-->
                                 </div>
                             </div>
                         </div>
@@ -107,9 +188,6 @@
 
     <!-- Core plugin JavaScript-->
     <script th:href="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script th:href="@{/js/sb-admin-2.min.js}"></script>
 
 </body>
 

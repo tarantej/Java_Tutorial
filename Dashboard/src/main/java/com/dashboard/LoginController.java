@@ -91,7 +91,7 @@ public class LoginController
     // Register
 
     @GetMapping("/register")
-    public String UserRegister()
+    public String userRegister()
     {
         return "Login/register";
     }
@@ -99,7 +99,7 @@ public class LoginController
     // Forgot Password
 
     @GetMapping("/forgot-password")
-    public String ForgotPassword()
+    public String forgotPassword()
     {
         return "Login/forgot-password";
     }
