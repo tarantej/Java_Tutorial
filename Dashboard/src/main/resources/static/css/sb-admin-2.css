@@ -582,12 +582,12 @@ pre code {
   }
 }
 
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -0.75rem;
-  margin-left: -0.75rem;
-}
+/*.row {*/
+/*  display: flex;*/
+/*  flex-wrap: wrap;*/
+/*  margin-right: -0.75rem;*/
+/*  margin-left: -0.75rem;*/
+/*}*/
 
 .no-gutters {
   margin-right: 0;
