@@ -1,6 +1,8 @@
 com\dashboard\DashboardApplication.class
+com\dashboard\service\CustomUserDetailsService.class
 com\dashboard\DashboardUsers.class
 com\dashboard\LoginController.class
 com\dashboard\DashboardController.class
 com\dashboard\UserSettingController.class
 com\dashboard\config\SecurityConfig.class
+com\dashboard\UserRepository.class

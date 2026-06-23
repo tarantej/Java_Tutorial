@@ -2,17 +2,10 @@ package com.dashboard;
 
 import java.sql.*;
 import jakarta.servlet.http.HttpSession;
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 
@@ -26,67 +19,6 @@ public class LoginController
 
         return"Login/login";
     }
-
-
-
-//    @PostMapping("/login")
-//    public String login(@RequestParam("username") String username,
-//                        @RequestParam("password") String password,
-//                        HttpSession session,
-//                        Model model)
-//    {
-//        // Login Validation
-//
-//        try {
-//
-//            Connection con = DriverManager.getConnection(
-//                    "jdbc:postgresql://localhost:5432/dashboard",
-//                    "postgres",
-//                    "12345"
-//            );
-//
-//            String query = "SELECT * FROM users WHERE username=? AND password=?";
-//
-//            PreparedStatement ps = con.prepareStatement(query);
-//
-//            ps.setString(1, username);
-//            ps.setString(2, password);
-//
-//            ResultSet rs = ps.executeQuery();
-//
-//            if(rs.next()) {
-//                String userName = rs.getString("username");
-//                String firstName = rs.getString("first_name");
-//                String lastName = rs.getString("last_name");
-//
-//                session.setAttribute("username", userName);
-//                session.setAttribute("firstName", firstName);
-//                session.setAttribute("lastName", lastName);
-//
-//                return "redirect:/dashboard";
-//            }
-//
-//            else {
-//
-//                model.addAttribute("error", "Invalid Username or Password");
-//
-//                return "Login/login";
-//            }
-//
-//        }
-//
-//        catch(Exception e) {
-//
-//            e.printStackTrace();
-//
-//            model.addAttribute(
-//                    "error",
-//                    "Database Error"
-//            );
-//
-//            return "Login/login";
-//        }
-//    }
 
     // Logout
 
@@ -120,5 +52,25 @@ public class LoginController
     public String resetPassword()
     {
         return "Login/reset-password";
+    }
+
+    //    Checking if User exists in database
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @GetMapping("/test-user")
+    @ResponseBody
+    public String testUser() {
+
+        DashboardUsers user =
+                userRepository.findByUsername("SupAdmin")
+                        .orElse(null);
+
+        if (user == null) {
+            return "User not found";
+        }
+
+        return user.getUsername();
     }
 }
