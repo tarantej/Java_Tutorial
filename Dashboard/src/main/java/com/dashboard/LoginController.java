@@ -56,21 +56,21 @@ public class LoginController
 
     //    Checking if User exists in database
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @GetMapping("/test-user")
-    @ResponseBody
-    public String testUser() {
-
-        DashboardUsers user =
-                userRepository.findByUsername("SupAdmin")
-                        .orElse(null);
-
-        if (user == null) {
-            return "User not found";
-        }
-
-        return user.getUsername();
-    }
+//    @Autowired
+//    private UserRepository userRepository;
+//
+//    @GetMapping("/test-user")
+//    @ResponseBody
+//    public String testUser() {
+//
+//        DashboardUsers user =
+//                userRepository.findByUsername("SupAdmin")
+//                        .orElse(null);
+//
+//        if (user == null) {
+//            return "User not found";
+//        }
+//
+//        return user.getUsername();
+//    }
 }

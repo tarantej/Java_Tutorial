@@ -26,8 +26,7 @@ public class SecurityConfig
                                 "/reset-password",
                                 "/css/**",
                                 "/js/**",
-                                "/img/**",
-                                "/test-user"
+                                "/img/**"
                         )
                         .permitAll()
                         .anyRequest()
@@ -38,6 +37,14 @@ public class SecurityConfig
                         .defaultSuccessUrl("/dashboard", true)
                         .permitAll()
                 )
+
+                //  Google OAuth
+
+                .oauth2Login(oauth -> oauth
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/dashboard", true)
+                )
+
                 .logout(logout -> logout
                         .logoutSuccessUrl("/")
                         .permitAll()

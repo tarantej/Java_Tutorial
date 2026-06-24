@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Login</title>
+    <title>Login | Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -19,7 +19,7 @@
     <!-- Custom styles for this template-->
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/css/sb-admin-2.css}" rel="stylesheet">
-    <link th:href="@{/css/dashboard-cms.css}" rel="stylesheet">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -156,19 +156,14 @@
 
                                     <div class="social-login">
 
-                                        <a href="#" class="oauth-btn github-btn">
+                                        <a href="/oauth2/authorization/github" class="oauth-btn github-btn">
                                             <img src="/img/GitHub.svg" alt="GitHub">
                                             <span>Continue with GitHub</span>
                                         </a>
 
-                                        <a href="#" class="oauth-btn google-btn">
+                                        <a href="/oauth2/authorization/google" class="oauth-btn google-btn">
                                             <img src="/img/Google.svg" alt="Google">
                                             <span>Continue with Google</span>
-                                        </a>
-
-                                        <a href="#" class="oauth-btn microsoft-btn">
-                                            <img src="/img/microsoft.svg" alt="Microsoft">
-                                            <span>Continue with Microsoft</span>
                                         </a>
 
                                     </div>
