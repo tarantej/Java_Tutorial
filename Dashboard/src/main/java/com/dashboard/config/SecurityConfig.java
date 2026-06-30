@@ -22,6 +22,13 @@ public class SecurityConfig
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/login",
+                                "/profile",
+                                "/system-settings",
+                                "/account-settings",
+                                "/messages",
+                                "/notifications",
+                                "/activity-log",
+                                "/blank",
                                 "/forgot-password",
                                 "/reset-password",
                                 "/css/**",

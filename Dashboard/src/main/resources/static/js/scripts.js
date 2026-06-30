@@ -24,3 +24,24 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+
+/* ===========================================
+   FORGOT PASSWORD AND RESET PASSWORD
+=========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const submitBtn = document.querySelector(".auth-btn");
+
+    if (submitBtn) {
+
+        submitBtn.addEventListener("click", function () {
+
+            submitBtn.innerHTML =
+                '<span class="spinner-border spinner-border-sm me-2"></span>Sending...';
+
+        });
+
+    }
+
+});

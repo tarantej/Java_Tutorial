@@ -55,8 +55,15 @@ public class DashboardController {
 
 
     @GetMapping("/blank")
-    public String BlankPage(Model model)
+    public String BlankPage(Model model, Authentication authentication)
     {
+        //  Get Session Username
+        model.addAttribute(
+                "username",
+                authentication.getName()
+        );
+
+        //  Breadcrumbs
 
         model.addAttribute("pageTitle", "Blank Page");
         
