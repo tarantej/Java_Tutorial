@@ -2,6 +2,8 @@ package com.dashboard;
 
 import jakarta.persistence.*;
 
+import java.sql.Timestamp;
+
 @Entity
 @Table(name = "users")
 public class DashboardUsers
@@ -30,6 +32,12 @@ public class DashboardUsers
 
     @Column(name = "profile_picture")
     private String profilePicture;
+
+    @Column(name = "reset_token")
+    private String resetToken;
+
+    @Column(name = "reset_token_expiry")
+    private java.sql.Timestamp resetTokenExpiry;
 
     //    Generate Getter and Setter
 
@@ -96,5 +104,21 @@ public class DashboardUsers
 
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
+    }
+
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
+    }
+
+    public Timestamp getResetTokenExpiry() {
+        return resetTokenExpiry;
+    }
+
+    public void setResetTokenExpiry(Timestamp resetTokenExpiry) {
+        this.resetTokenExpiry = resetTokenExpiry;
     }
 }

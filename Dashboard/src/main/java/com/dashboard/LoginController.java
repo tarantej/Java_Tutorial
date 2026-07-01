@@ -1,6 +1,10 @@
 package com.dashboard;
 
 import java.sql.*;
+import java.util.Optional;
+import java.util.UUID;
+
+import com.dashboard.service.CustomUserDetailsService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.dashboard.service.MailService;
 
 @Controller
 
@@ -53,9 +58,42 @@ public class LoginController
     public String processForgotPassword(
             @RequestParam String email,
             Model model)
-    {
 
-        System.out.println(email);
+    {
+        Optional<DashboardUsers> user= userRepository.findByEmail(email);
+        if(user.isPresent())
+        {
+            System.out.println("User found: " + user.get().getUsername());
+            String token = UUID.randomUUID().toString();
+
+            String resetLink =
+                    "http://localhost:8800/reset-password?token=" + token;
+
+
+
+
+
+//            System.out.println("Reset Token: " + token);
+
+            Timestamp expiry =
+                    new Timestamp(System.currentTimeMillis()
+                            + (15 * 60 * 1000));
+
+            user.get().setResetToken(token);
+            user.get().setResetTokenExpiry(expiry);
+
+            userRepository.save(user.get());
+
+            mailService.sendResetEmail(email, resetLink);
+
+            System.out.println(resetLink);
+        }
+        else
+        {
+            System.out.println("No User exists with email: " + email);
+        }
+
+//        System.out.println(email);
 
         model.addAttribute("message",
                 "If an account exists, a reset link has been sent.");
@@ -64,19 +102,50 @@ public class LoginController
 
     }
 
+    @Autowired
+    private MailService mailService;
+
+
+
     // Reset Password
 
     @GetMapping("/reset-password")
-    public String resetPassword()
+    public String resetPassword(@RequestParam String token,
+                                Model model)
     {
+        Optional<DashboardUsers> user =
+                userRepository.findByResetToken(token);
+
+        if(user.isEmpty())
+        {
+            model.addAttribute(
+                    "error",
+                    "Invalid password reset link.");
+
+            return "Login/forgot-password";
+        }
+
+        Timestamp now =
+                new Timestamp(System.currentTimeMillis());
+
+        if(user.get().getResetTokenExpiry().before(now))
+        {
+            model.addAttribute(
+                    "error",
+                    "Password reset link has expired.");
+
+            return "Login/forgot-password";
+        }
+
+
         return "Login/reset-password";
     }
 
+    @Autowired
+    private UserRepository userRepository;
+
     //    Checking if User exists in database
 
-//    @Autowired
-//    private UserRepository userRepository;
-//
 //    @GetMapping("/test-user")
 //    @ResponseBody
 //    public String testUser() {
