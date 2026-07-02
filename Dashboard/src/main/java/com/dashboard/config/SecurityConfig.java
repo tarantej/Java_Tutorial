@@ -31,6 +31,7 @@ public class SecurityConfig
                                 "/blank",
                                 "/forgot-password",
                                 "/reset-password",
+                                "/success",
                                 "/css/**",
                                 "/js/**",
                                 "/img/**"

@@ -66,15 +66,6 @@ public class LoginController
             System.out.println("User found: " + user.get().getUsername());
             String token = UUID.randomUUID().toString();
 
-            String resetLink =
-                    "http://localhost:8800/reset-password?token=" + token;
-
-
-
-
-
-//            System.out.println("Reset Token: " + token);
-
             Timestamp expiry =
                     new Timestamp(System.currentTimeMillis()
                             + (15 * 60 * 1000));
@@ -83,6 +74,8 @@ public class LoginController
             user.get().setResetTokenExpiry(expiry);
 
             userRepository.save(user.get());
+
+            String resetLink = "http://localhost:8800/reset-password?token=" + token;
 
             mailService.sendResetEmail(email, resetLink);
 
@@ -93,12 +86,9 @@ public class LoginController
             System.out.println("No User exists with email: " + email);
         }
 
-//        System.out.println(email);
+        model.addAttribute("email", email);
 
-        model.addAttribute("message",
-                "If an account exists, a reset link has been sent.");
-
-        return "Login/forgot-password";
+        return "Login/success";
 
     }
 
