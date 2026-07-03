@@ -2,6 +2,7 @@ package com.dashboard;
 
 import java.sql.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,12 +18,40 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+
+
 @Controller
 public class UserSettingController
 {
+
+    @Autowired
+    private UserRepository userRepository;
+
+
     @GetMapping("/profile")
     public String UserProfile(Authentication authentication, Model model)
     {
+
+        DashboardUsers user = userRepository
+                .findByUsername(authentication.getName())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        model.addAttribute("first_name", user.getFirstName());
+        model.addAttribute("last_name", user.getLastName());
+        model.addAttribute("email", user.getEmail());
+        model.addAttribute("user_role", user.getUserRole());
+
+        model.addAttribute("phone_number", user.getPhoneNumber());
+        model.addAttribute("bio", user.getUserBio());
+
+        model.addAttribute("city", user.getUserCity());
+        model.addAttribute("country", user.getUserCountry());
+
+        model.addAttribute("profile_picture", user.getProfilePicture());
+
+        model.addAttribute("created_at", user.getCreatedAt());
+        model.addAttribute("updated_at", user.getUpdatedAt());
+
         //  Get Session Username
         model.addAttribute(
                 "username",

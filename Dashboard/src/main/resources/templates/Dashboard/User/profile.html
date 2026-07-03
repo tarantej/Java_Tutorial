@@ -88,33 +88,33 @@
                                             <div class="col-md-8">
 
                                                 <h2 class="font-weight-bold">
-                                                    Admin
+                                                    <span th:text="${username}"></span>
                                                 </h2>
 
                                                 <span class="badge-admin px-3 py-2 mb-3">
-                            Administrator
+                            <span th:text="${user_role}"></span>
                         </span>
 
                                                 <div class="mt-4">
 
                                                     <p>
                                                         <i class="bi bi-envelope ms-2"></i>
-                                                        admin@example.com
+                                                        <span th:text="${email}"></span>
                                                     </p>
 
                                                     <p>
                                                         <i class="bi bi-calendar-event ms-2"></i>
-                                                        Joined January 10, 2025
+                                                        Joined <span th:text="${created_at}"></span>
                                                     </p>
 
                                                     <p>
                                                         <i class="bi bi-clock ms-2"></i>
-                                                        Last Login: May 18, 2025
+                                                        Last Login: <span th:text="${updated_at}"></span>
                                                     </p>
 
                                                     <p>
                                                         <i class="bi bi-geo-alt ms-2"></i>
-                                                        New Delhi, India
+                                                        <span th:text="${city}"></span>, <span th:text="${country}"></span>
                                                     </p>
 
                                                 </div>
@@ -217,35 +217,35 @@
                                                 <td width="35%">
                                                     <strong>First Name</strong>
                                                 </td>
-                                                <td>Tarantej</td>
+                                                <td><span th:text="${first_name}"></span></td>
                                             </tr>
 
                                             <tr>
                                                 <td>
                                                     <strong>Last Name</strong>
                                                 </td>
-                                                <td>Singh</td>
+                                                <td><span th:text="${last_name}"></span></td>
                                             </tr>
 
                                             <tr>
                                                 <td>
                                                     <strong>Username</strong>
                                                 </td>
-                                                <td>Admin</td>
+                                                <td><span th:text="${username}"></span></td>
                                             </tr>
 
                                             <tr>
                                                 <td>
                                                     <strong>Email Address</strong>
                                                 </td>
-                                                <td>tarantejsingh@gmail.com</td>
+                                                <td><span th:text="${email}"></span></td>
                                             </tr>
 
                                             <tr>
                                                 <td>
                                                     <strong>Phone Number</strong>
                                                 </td>
-                                                <td>+91 98765 43210</td>
+                                                <td><span th:text="${phone}"></span></td>
                                             </tr>
 
                                             <tr>
@@ -253,8 +253,7 @@
                                                     <strong>Bio</strong>
                                                 </td>
                                                 <td>
-                                                    Full-stack developer passionate about building
-                                                    modern web applications.
+                                                    <span th:text="${bio}"></span>
                                                 </td>
                                             </tr>
 
@@ -286,7 +285,7 @@
                                             </span>
 
                                             <span class="badge-admin">
-                                                Administrator
+                                                <span th:text="${user_role}"></span>
                                             </span>
                                         </div>
 

@@ -39,6 +39,24 @@ public class DashboardUsers
     @Column(name = "reset_token_expiry")
     private java.sql.Timestamp resetTokenExpiry;
 
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @Column(name = "bio")
+    private String userBio;
+
+    @Column(name = "city")
+    private String userCity;
+
+    @Column(name = "country")
+    private String userCountry;
+
+    @Column(name = "created_at")
+    private java.sql.Timestamp createdAt;
+
+    @Column(name = "updated_at")
+    private java.sql.Timestamp updatedAt;
+
     //    Generate Getter and Setter
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -76,6 +94,14 @@ public class DashboardUsers
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public void setFirstName(String firstName) {
@@ -120,5 +146,45 @@ public class DashboardUsers
 
     public void setResetTokenExpiry(Timestamp resetTokenExpiry) {
         this.resetTokenExpiry = resetTokenExpiry;
+    }
+
+    public String getUserBio() {
+        return userBio;
+    }
+
+    public void setUserBio(String userBio) {
+        this.userBio = userBio;
+    }
+
+    public String getUserCity() {
+        return userCity;
+    }
+
+    public void setUserCity(String userCity) {
+        this.userCity = userCity;
+    }
+
+    public String getUserCountry() {
+        return userCountry;
+    }
+
+    public void setUserCountry(String userCountry) {
+        this.userCountry = userCountry;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

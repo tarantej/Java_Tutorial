@@ -3,6 +3,7 @@ package com.dashboard;
 import java.sql.*;
 import java.time.LocalTime;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 @Controller
-public class DashboardController {
+public class DashboardController
+{
 
     @GetMapping("/")
     public String home()
@@ -22,10 +24,19 @@ public class DashboardController {
 
     //  Dashboard Page
 
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping("/dashboard")
     public String Dashboard(Model model,
                             Authentication authentication)
     {
+
+        DashboardUsers user = userRepository
+                .findByUsername(authentication.getName())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+
         //  Greeting based on time of the day
 
         LocalTime now = LocalTime.now();
@@ -46,8 +57,8 @@ public class DashboardController {
 
         //  Get Session Username
         model.addAttribute(
-                "username",
-                authentication.getName()
+                "first_name",
+                user.getFirstName()
         );
 
         return "Dashboard/dashboard";
@@ -57,10 +68,16 @@ public class DashboardController {
     @GetMapping("/blank")
     public String BlankPage(Model model, Authentication authentication)
     {
+
+        DashboardUsers user = userRepository
+                .findByUsername(authentication.getName())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+
         //  Get Session Username
         model.addAttribute(
-                "username",
-                authentication.getName()
+                "first_name",
+                user.getFirstName()
         );
 
         //  Breadcrumbs
