@@ -100,11 +100,16 @@ public class LoginController
     // Reset Password
 
     @GetMapping("/reset-password")
-    public String resetPassword(@RequestParam String token,
-                                Model model)
+    public String resetPassword
+            (
+            @RequestParam String token,
+            Model model
+    )
     {
         Optional<DashboardUsers> user =
                 userRepository.findByResetToken(token);
+
+
 
         if(user.isEmpty())
         {
@@ -126,6 +131,12 @@ public class LoginController
 
             return "Login/forgot-password";
         }
+
+                DashboardUsers resetUser = user.get();
+
+        model.addAttribute("first_name", resetUser.getFirstName());
+        model.addAttribute("last_name", resetUser.getLastName());
+        model.addAttribute("token", token);
 
 
         return "Login/reset-password";
