@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function ()
 {
 
-    const newPassword = document.getElementById("newPassword");
+    const NewPassword = document.getElementById("NewPassword");
     const confirmPassword = document.getElementById("confirmPassword");
 
     const strengthLabel = document.getElementById("strengthLabel");
@@ -40,16 +40,16 @@ document.addEventListener("DOMContentLoaded", function ()
 
         let score = 0;
 
-        if(newPassword.value.length >= 8)
+        if(NewPassword.value.length >= 8)
             score++;
 
-        if(/[A-Z]/.test(newPassword.value))
+        if(/[A-Z]/.test(NewPassword.value))
             score++;
 
-        if(/[a-z]/.test(newPassword.value))
+        if(/[a-z]/.test(NewPassword.value))
             score++;
 
-        if(/[0-9!@#$%^&*]/.test(newPassword.value))
+        if(/[0-9!@#$%^&*]/.test(NewPassword.value))
             score++;
 
         //--------------------------------
@@ -88,16 +88,16 @@ document.addEventListener("DOMContentLoaded", function ()
         }
 
         const hasLength =
-            newPassword.value.length>=8;
+            NewPassword.value.length>=8;
 
         const hasUpper =
-            /[A-Z]/.test(newPassword.value);
+            /[A-Z]/.test(NewPassword.value);
 
         const hasLower =
-            /[a-z]/.test(newPassword.value);
+            /[a-z]/.test(NewPassword.value);
 
         const hasNumber =
-            /[0-9!@#$%^&*]/.test(newPassword.value);
+            /[0-9!@#$%^&*]/.test(NewPassword.value);
 
         updateRule(lengthRule,hasLength);
 
@@ -110,14 +110,14 @@ document.addEventListener("DOMContentLoaded", function ()
         //--------------------------------
 
         const passwordsMatch =
-            newPassword.value === confirmPassword.value &&
-            newPassword.value.length>0;
+            NewPassword.value === confirmPassword.value &&
+            NewPassword.value.length>0;
 
         resetButton.disabled = !(score==4 && passwordsMatch);
 
     }
 
-    newPassword.addEventListener("input", calculateStrength);
+    NewPassword.addEventListener("input", calculateStrength);
 
     confirmPassword.addEventListener("input", calculateStrength);
 

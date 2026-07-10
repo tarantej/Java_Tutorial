@@ -7,6 +7,7 @@ import java.util.UUID;
 import com.dashboard.service.CustomUserDetailsService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -144,6 +145,65 @@ public class LoginController
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @PostMapping("/reset-password")
+    public String processResetPassword(
+            @RequestParam String token,
+            @RequestParam String NewPassword,
+            @RequestParam String confirmPassword,
+            Model model
+    )
+    {
+        Optional<DashboardUsers> user =
+                userRepository.findByResetToken(token);
+
+        if(user.isEmpty())
+        {
+            model.addAttribute(
+                    "error",
+                    "Invalid password reset link.");
+
+            return "Login/forgot-password";
+        }
+
+        Timestamp now =
+                new Timestamp(System.currentTimeMillis());
+
+        if(user.get().getResetTokenExpiry().before(now))
+        {
+            model.addAttribute(
+                    "error",
+                    "Password reset link has expired.");
+
+            return "Login/forgot-password";
+        }
+
+        if(!NewPassword.equals(confirmPassword))
+        {
+            model.addAttribute(
+                    "error",
+                    "Passwords do not match.");
+
+            return "Login/reset-password";
+        }
+
+        DashboardUsers resetUser = user.get();
+
+        resetUser.setPassword(
+                passwordEncoder.encode(NewPassword)
+        );
+
+        resetUser.setResetToken(null);
+
+        resetUser.setResetTokenExpiry(null);
+
+        userRepository.save(resetUser);
+
+        return "Login/reset-success";
+    }
 
     //    Checking if User exists in database
 
