@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 @Controller
 public class DashboardController
@@ -32,9 +33,26 @@ public class DashboardController
                             Authentication authentication)
     {
 
-        DashboardUsers user = userRepository
-                .findByUsername(authentication.getName())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+        DashboardUsers user;
+
+        if (authentication.getPrincipal() instanceof OAuth2User oauthUser) {
+
+            String email = oauthUser.getAttribute("email");
+
+            user = userRepository
+                    .findByEmail(email)
+                    .orElse(null);
+
+            if (user == null) {
+                return "redirect:/oauth-signup";
+            }
+
+        } else {
+
+            user = userRepository
+                    .findByUsername(authentication.getName())
+                    .orElseThrow(() -> new RuntimeException("User not found"));
+        }
 
 
         //  Greeting based on time of the day

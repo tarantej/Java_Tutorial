@@ -7,13 +7,22 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+//import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import com.dashboard.config.OAuth2LoginSuccessHandler;
 
 @Configuration
 
 public class SecurityConfig
 {
+
+    private final OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler;
+
+    public SecurityConfig(OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler) {
+        this.oAuth2LoginSuccessHandler = oAuth2LoginSuccessHandler;
+    }
+
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http)
             throws Exception {
@@ -32,6 +41,8 @@ public class SecurityConfig
                                 "/blank",
                                 "/forgot-password",
                                 "/reset-password",
+                                "/oauth-signup",
+                                "/oauth-success",
                                 "/success",
                                 "/css/**",
                                 "/js/**",
@@ -51,7 +62,7 @@ public class SecurityConfig
 
                 .oauth2Login(oauth -> oauth
                         .loginPage("/login")
-                        .defaultSuccessUrl("/dashboard", true)
+                        .successHandler(oAuth2LoginSuccessHandler)
                 )
 
                 .logout(logout -> logout
@@ -80,6 +91,8 @@ public class SecurityConfig
         return new BCryptPasswordEncoder();
 
     }
+
+
 
 //    @Bean
 //    public UserDetailsService users() {

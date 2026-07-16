@@ -7,7 +7,9 @@ import java.util.UUID;
 import com.dashboard.service.CustomUserDetailsService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,13 +41,34 @@ public class LoginController
         return "redirect:/login";
     }
 
-    // Register
+    // OAuth
 
-//    @GetMapping("/register")
-//    public String userRegister()
-//    {
-//        return "Login/register";
-//    }
+    @GetMapping("/oauth-signup")
+    public String OAuthSignupPage(Model model, Authentication authentication)
+    {
+        if (authentication == null) {
+            return "redirect:/login";
+        }
+
+        if (!(authentication.getPrincipal() instanceof OAuth2User oauthUser)) {
+            return "redirect:/login";
+        }
+
+        model.addAttribute("name", oauthUser.getAttribute("name"));
+        model.addAttribute("email", oauthUser.getAttribute("email"));
+        model.addAttribute("picture", oauthUser.getAttribute("picture"));
+
+        return "Login/OAuth/oauth-signup";
+    }
+
+    @GetMapping("/oauth-success")
+    public String OAuthSuccessPage(Model model)
+    {
+        //  Breadcrumbs
+
+        model.addAttribute("pageTitle", "Success");
+        return "Login/OAuth/oauth-success";
+    }
 
     // Forgot Password
 
