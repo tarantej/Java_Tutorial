@@ -8,6 +8,8 @@ import java.sql.Timestamp;
 @Table(name = "users")
 public class DashboardUsers
 {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Id
     @Column(name = "user_id")
     private Integer userId;
@@ -59,14 +61,14 @@ public class DashboardUsers
 
     //    Generate Getter and Setter
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+//    public void setUserId(Integer userId) {
+//        this.userId = userId;
+//    }
 
     public String getUsername() {
         return username;

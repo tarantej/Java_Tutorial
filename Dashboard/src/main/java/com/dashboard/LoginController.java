@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -59,6 +60,109 @@ public class LoginController
         model.addAttribute("picture", oauthUser.getAttribute("picture"));
 
         return "Login/OAuth/oauth-signup";
+    }
+
+    @PostMapping("/oauth-signup")
+    public String PostOAuthSignup(Model model,
+                                  @RequestParam String username,
+                                  @RequestParam String displayName,
+                                  @RequestParam(required = false) String phoneNumber,
+                                  @RequestParam String timeZone,
+                                  @RequestParam(required = false) String password,
+                                  @RequestParam(required = false) String confirmPassword,
+                                  Authentication authentication)
+    {
+        if (authentication == null) {
+            return "redirect:/login";
+        }
+
+        if (!(authentication.getPrincipal() instanceof OAuth2User oauthUser)) {
+            return "redirect:/login";
+        }
+
+        OAuth2AuthenticationToken token =
+                (OAuth2AuthenticationToken) authentication;
+
+        String provider =
+                token.getAuthorizedClientRegistrationId();
+
+        String firstName = "";
+        String lastName = "";
+        String email = "";
+        String profilePicture = "";
+
+
+        //  Check the OAuth Provider
+
+        if (provider.equals("google"))
+        {
+            email = oauthUser.getAttribute("email");
+            firstName = oauthUser.getAttribute("given_name");
+            lastName = oauthUser.getAttribute("family_name");
+            profilePicture = oauthUser.getAttribute("picture");
+        }
+        else if (provider.equals("github"))
+        {
+            email = oauthUser.getAttribute("email");
+            profilePicture = oauthUser.getAttribute("avatar_url");
+
+            String fullName = oauthUser.getAttribute("name");
+
+            if (fullName != null && !fullName.isBlank())
+            {
+                String[] parts = fullName.split(" ", 2);
+
+                firstName = parts[0];
+
+                if (parts.length > 1)
+                {
+                    lastName = parts[1];
+                }
+            }
+            else
+            {
+                String login = oauthUser.getAttribute("login");
+                firstName = login;
+            }
+        }
+
+        Optional<DashboardUsers> existingUser =
+                userRepository.findByEmail(email);
+
+        if (existingUser.isPresent()) {
+            return "redirect:/dashboard";
+        }
+
+        DashboardUsers user = new DashboardUsers();
+
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        user.setProfilePicture(profilePicture);
+
+        user.setUsername(username);
+        user.setPhoneNumber(phoneNumber);
+
+        user.setUserRole("EMPLOYEE");
+
+
+        if (password == null || confirmPassword == null ||
+                !password.equals(confirmPassword))
+        {
+            model.addAttribute(
+                    "error",
+                    "Passwords do not match.");
+
+            return "Login/OAuth/oauth-signup";
+        }
+
+        user.setPassword(
+                passwordEncoder.encode(password));
+
+        userRepository.save(user);
+        return "redirect:/oauth-success";
+
+//        return "Login/OAuth/oauth-signup";
     }
 
     @GetMapping("/oauth-success")
