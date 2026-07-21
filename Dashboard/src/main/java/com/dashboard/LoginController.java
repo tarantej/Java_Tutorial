@@ -55,9 +55,62 @@ public class LoginController
             return "redirect:/login";
         }
 
-        model.addAttribute("name", oauthUser.getAttribute("name"));
-        model.addAttribute("email", oauthUser.getAttribute("email"));
-        model.addAttribute("picture", oauthUser.getAttribute("picture"));
+        OAuth2AuthenticationToken token =
+                (OAuth2AuthenticationToken) authentication;
+
+        String provider =
+                token.getAuthorizedClientRegistrationId();
+
+        String providerLogo = "";
+
+        String displayName = "";
+        String firstName = "";
+        String lastName = "";
+        String email = "";
+        String phoneNumber = "";
+        String profilePicture = "";
+        String userBio = "";
+        String city = "";
+        String country = "";
+
+        if (provider.equals("google"))
+        {
+            displayName = oauthUser.getAttribute("name");
+            email = oauthUser.getAttribute("email");
+            profilePicture = oauthUser.getAttribute("picture");
+
+            provider = "Google";
+            providerLogo = "/img/Google.svg";
+        }
+
+        else if (provider.equals("github"))
+        {
+            displayName = oauthUser.getAttribute("name");
+
+            if (displayName == null || displayName.isBlank())
+            {
+                displayName = oauthUser.getAttribute("login");
+            }
+
+            email = oauthUser.getAttribute("email");
+            profilePicture = oauthUser.getAttribute("avatar_url");
+
+            provider = "GitHub";
+            providerLogo = "/img/GitHub.svg";
+        }
+
+        model.addAttribute("displayName", displayName);
+        model.addAttribute("firstName", firstName);
+        model.addAttribute("lastName", lastName);
+        model.addAttribute("email", email);
+        model.addAttribute("phoneNumber", phoneNumber);
+        model.addAttribute("userBio", userBio);
+        model.addAttribute("city", city);
+        model.addAttribute("country", country);
+        model.addAttribute("picture", profilePicture);
+
+        model.addAttribute("provider", provider);
+        model.addAttribute("providerLogo", providerLogo);
 
         return "Login/OAuth/oauth-signup";
     }
@@ -65,11 +118,8 @@ public class LoginController
     @PostMapping("/oauth-signup")
     public String PostOAuthSignup(Model model,
                                   @RequestParam String username,
-                                  @RequestParam String displayName,
-                                  @RequestParam(required = false) String phoneNumber,
-                                  @RequestParam String timeZone,
-                                  @RequestParam(required = false) String password,
-                                  @RequestParam(required = false) String confirmPassword,
+                                  @RequestParam String password,
+                                  @RequestParam String confirmPassword,
                                   Authentication authentication)
     {
         if (authentication == null) {
@@ -89,7 +139,11 @@ public class LoginController
         String firstName = "";
         String lastName = "";
         String email = "";
+        String phoneNumber = "";
         String profilePicture = "";
+        String userBio = "";
+        String city = "";
+        String country = "";
 
 
         //  Check the OAuth Provider
@@ -126,6 +180,8 @@ public class LoginController
             }
         }
 
+        //  Check if user already exists in the Dashboard
+
         Optional<DashboardUsers> existingUser =
                 userRepository.findByEmail(email);
 
@@ -133,15 +189,19 @@ public class LoginController
             return "redirect:/dashboard";
         }
 
+        //  User Dashboard Signup
+
         DashboardUsers user = new DashboardUsers();
 
+        user.setUsername(username);
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setEmail(email);
-        user.setProfilePicture(profilePicture);
-
-        user.setUsername(username);
         user.setPhoneNumber(phoneNumber);
+        user.setProfilePicture(profilePicture);
+        user.setUserBio(userBio);
+        user.setUserCity(city);
+        user.setUserCountry(country);
 
         user.setUserRole("EMPLOYEE");
 
@@ -161,8 +221,6 @@ public class LoginController
 
         userRepository.save(user);
         return "redirect:/oauth-success";
-
-//        return "Login/OAuth/oauth-signup";
     }
 
     @GetMapping("/oauth-success")

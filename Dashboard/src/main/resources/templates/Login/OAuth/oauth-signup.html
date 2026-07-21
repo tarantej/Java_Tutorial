@@ -49,7 +49,7 @@
             <div class="oauth-step oauth-step-complete">
                 <span class="oauth-step-icon"><i class="bi bi-check-lg" aria-hidden="true"></i></span>
                 <span class="oauth-step-number">1</span>
-                <span class="oauth-step-label">Google Sign In</span>
+                <span class="oauth-step-label" th:text="${provider} + ' Authentication'"></span>
             </div>
 
             <span class="oauth-step-connector" aria-hidden="true"></span>
@@ -80,12 +80,14 @@
         <section class="oauth-onboarding-intro" aria-labelledby="oauth-signup-title">
             <p class="oauth-verified-badge">
                 <i class="bi bi-shield-check" aria-hidden="true"></i>
-                Google account verified
+                <span th:text="${provider} + ' account verified'"></span>
             </p>
 
             <h1 id="oauth-signup-title">Complete <span>Your Profile</span></h1>
             <p>
-                Your Google account has been successfully verified.<br>
+                Your
+                <strong th:text="${provider}"></strong>
+                account has been successfully verified.<br>
                 Please provide a few more details to set up your<br class="d-none d-sm-block">
                 Dashboard CMS profile.
             </p>
@@ -96,15 +98,15 @@
 
             <img th:src="${picture}"
                  class="oauth-profile-avatar"
-                 alt="Google profile picture">
+                 th:alt="${provider} + ' profile picture'">
 
             <div class="oauth-profile-details">
 
-                <h2 id="oauth-profile-name" th:text="${name}">Google user</h2>
-                <p th:text="${email}">email@example.com</p>
+                <h2 id="oauth-profile-name" th:text="${displayName}"></h2>
+                <p th:text="${email}"></p>
                 <div class="oauth-google-connection">
-                    <img th:src="@{/img/Google.svg}" alt="Google">
-                    <span>Connected with Google</span>
+                    <img th:src="${providerLogo}" th:alt="${provider}">
+                    <span>Connected with <span th:text="${provider}"></span></span>
                     <i class="bi bi-check-circle-fill" aria-label="Verified"></i>
                 </div>
             </div>
@@ -155,7 +157,7 @@
                                name="displayName"
                                type="text"
                                class="form-control"
-                               th:value="${name}"
+                               th:value="${displayName}"
                                placeholder="Your display name"
                                autocomplete="name"
                                required>
@@ -163,7 +165,63 @@
                     <p class="oauth-field-hint">This name will be displayed in the Dashboard CMS.</p>
                 </div>
 
-                <div class="row g-4">
+                <div class="row g-4 mt-1 mb-1">
+
+                    <!-- City -->
+                    <div class="col-12 col-md-6">
+                        <div class="oauth-field-group mb-0">
+                            <label for="city">City</label>
+
+                            <div class="oauth-input-wrap">
+                                <i class="bi bi-buildings" aria-hidden="true"></i>
+
+                                <input id="city"
+                                       name="city"
+                                       type="text"
+                                       class="form-control"
+                                       placeholder="Enter your city"
+                                       autocomplete="address-level2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Country -->
+                    <div class="col-12 col-md-6">
+                        <div class="oauth-field-group mb-0">
+
+                            <label for="country">Country</label>
+
+                            <div class="oauth-select-wrap">
+                                <i class="bi bi-geo-alt" aria-hidden="true"></i>
+
+                                <select id="country"
+                                        name="country"
+                                        class="form-select">
+
+                                    <option value="" selected disabled>Select your country</option>
+
+                                    <option value="Australia">Australia</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="France">France</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="India">India</option>
+                                    <option value="Japan">Japan</option>
+                                    <option value="New Zealand">New Zealand</option>
+                                    <option value="Singapore">Singapore</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="United States">United States</option>
+
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="row g-4 mt-1 mb-1">
                     <div class="col-12 col-md-6">
                         <div class="oauth-field-group mb-0">
                             <label for="phoneNumber">Phone Number <span>(Optional)</span></label>
@@ -205,12 +263,41 @@
                 </div>
             </section>
 
-            <section class="oauth-form-section oauth-password-section" aria-labelledby="password-heading">
+            <section class="oauth-form-section">
+
                 <div class="oauth-section-heading">
-                    <h2 id="password-heading">Password <span>(Optional)</span></h2>
+                    <h2>About You</h2>
                     <span></span>
                 </div>
-                <p class="oauth-password-copy">Create a password to allow local login in addition to<br class="d-none d-md-block"> signing in with Google.</p>
+
+                <div class="oauth-field-group">
+
+                    <label for="userBio">
+                        Bio
+                        <span>(Optional)</span>
+                    </label>
+
+                    <textarea id="userBio"
+                              name="userBio"
+                              class="form-control"
+                              rows="5"
+                              maxlength="300"
+                              placeholder="Tell us a little about yourself..."></textarea>
+
+                    <p class="oauth-field-hint">
+                        Share a short introduction that will appear on your Dashboard profile.
+                    </p>
+
+                </div>
+
+            </section>
+
+            <section class="oauth-form-section oauth-password-section" aria-labelledby="password-heading">
+                <div class="oauth-section-heading">
+                    <h2 id="password-heading">Password</h2>
+                    <span></span>
+                </div>
+                <p class="oauth-password-copy">Create a password to allow local login in addition to<br class="d-none d-md-block"> signing in with <span th:text="${provider}"></span>.</p>
 
                 <div class="row g-4">
                     <div class="col-12 col-md-6">
