@@ -59,6 +59,15 @@ public class DashboardUsers
     @Column(name = "updated_at")
     private java.sql.Timestamp updatedAt;
 
+    @Column(name = "oauth_provider")
+    private String oauthProvider;
+
+    @Column(name = "oauth_id")
+    private String oauthId;
+
+    @Column(name = "oauth_picture")
+    private String oauthPicture;
+
     //    Generate Getter and Setter
 
 
@@ -188,5 +197,29 @@ public class DashboardUsers
 
     public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getOauthProvider() {
+        return oauthProvider;
+    }
+
+    public void setOauthProvider(String oauthProvider) {
+        this.oauthProvider = oauthProvider;
+    }
+
+    public String getOauthId() {
+        return oauthId;
+    }
+
+    public void setOauthId(String oauthId) {
+        this.oauthId = oauthId;
+    }
+
+    public String getOauthPicture() {
+        return oauthPicture;
+    }
+
+    public void setOauthPicture(String oauthPicture) {
+        this.oauthPicture = oauthPicture;
     }
 }

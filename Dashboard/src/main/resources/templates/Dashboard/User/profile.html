@@ -144,10 +144,8 @@
 
                                         </div>
 
-                                        <p class="text-muted">
-                                            Full-stack developer passionate about building modern,
-                                            scalable web applications. I love learning new technologies
-                                            and solving real-world problems.
+                                        <p class="text-muted"
+                                           th:text="${bio}">
                                         </p>
 
                                         <hr>
@@ -245,7 +243,7 @@
                                                 <td>
                                                     <strong>Phone Number</strong>
                                                 </td>
-                                                <td><span th:text="${phone}"></span></td>
+                                                <td><span th:text="${phone_number}"></span></td>
                                             </tr>
 
                                             <tr>

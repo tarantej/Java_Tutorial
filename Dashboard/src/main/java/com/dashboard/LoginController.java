@@ -145,6 +145,10 @@ public class LoginController
         String city = "";
         String country = "";
 
+        String oauthId = "";
+        String oauthProvider = "";
+        String oauthPicture = "";
+
 
         //  Check the OAuth Provider
 
@@ -154,6 +158,10 @@ public class LoginController
             firstName = oauthUser.getAttribute("given_name");
             lastName = oauthUser.getAttribute("family_name");
             profilePicture = oauthUser.getAttribute("picture");
+
+            oauthProvider = "GOOGLE";
+            oauthId = oauthUser.getAttribute("sub");
+            oauthPicture = profilePicture;
         }
         else if (provider.equals("github"))
         {
@@ -161,6 +169,12 @@ public class LoginController
             profilePicture = oauthUser.getAttribute("avatar_url");
 
             String fullName = oauthUser.getAttribute("name");
+
+            oauthProvider = "GITHUB";
+            Object githubId = oauthUser.getAttribute("id");
+            oauthId = githubId.toString();
+//            oauthId = String.valueOf(oauthUser.getAttribute("id"));
+            oauthPicture = profilePicture;
 
             if (fullName != null && !fullName.isBlank())
             {
@@ -198,10 +212,14 @@ public class LoginController
         user.setLastName(lastName);
         user.setEmail(email);
         user.setPhoneNumber(phoneNumber);
-        user.setProfilePicture(profilePicture);
+        user.setOauthPicture(profilePicture);
         user.setUserBio(userBio);
         user.setUserCity(city);
         user.setUserCountry(country);
+        user.setOauthProvider(oauthProvider);
+        user.setOauthId(oauthId);
+        user.setOauthPicture(oauthPicture);
+        user.setProfilePicture(null);
 
         user.setUserRole("EMPLOYEE");
 

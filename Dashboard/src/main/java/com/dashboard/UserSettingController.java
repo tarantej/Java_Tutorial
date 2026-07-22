@@ -2,6 +2,7 @@ package com.dashboard;
 
 import java.sql.*;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 
@@ -36,6 +37,11 @@ public class UserSettingController
                 .findByUsername(authentication.getName())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
+        //  Get Session Username
+        model.addAttribute("username", authentication.getName());
+
+        //  Get profile details
+
         model.addAttribute("first_name", user.getFirstName());
         model.addAttribute("last_name", user.getLastName());
         model.addAttribute("email", user.getEmail());
@@ -48,65 +54,32 @@ public class UserSettingController
         model.addAttribute("country", user.getUserCountry());
 
         model.addAttribute("profile_picture", user.getProfilePicture());
+        model.addAttribute("oauth_provider", user.getOauthProvider());
+        model.addAttribute("oauth_picture", user.getOauthPicture());
 
         model.addAttribute("created_at", user.getCreatedAt());
         model.addAttribute("updated_at", user.getUpdatedAt());
 
-        //  Get Session Username
-        model.addAttribute(
-                "username",
-                authentication.getName()
-        );
+
+
+
 
         //  Breadcrumbs
 
         model.addAttribute("pageTitle", "Profile");
 
-//        String username = (String) session.getAttribute("username");
-//
-//        try {
-//
-//            Connection con = DriverManager.getConnection(
-//                    "jdbc:postgresql://localhost:5432/dashboard",
-//                    "postgres",
-//                    "12345"
-//            );
-//
-//            String query = "SELECT * FROM users WHERE username=?";
-//
-//            PreparedStatement ps = con.prepareStatement(query);
-//
-//            ps.setString(1, username);
-//
-//            ResultSet rs = ps.executeQuery();
-//
-//            if(rs.next())
-//            {
-//                model.addAttribute("username", rs.getString("username"));
-//                model.addAttribute("first_name", rs.getString("first_name"));
-//                model.addAttribute("last_name", rs.getString("last_name"));
-//                model.addAttribute("email", rs.getString("email"));
-//                model.addAttribute("user_role", rs.getString("user_role"));
-//                model.addAttribute("profile_picture", rs.getString("profile_picture"));
-//            }
-//
-//        }
-//
-//        catch(Exception e)
-//        {
-//            e.printStackTrace();
-//        }
-
         return "Dashboard/User/profile";
     }
 
-//    @PostMapping("/profile")
-//    public String UserUpdateProfile(HttpSession session,
-//                                @RequestParam String first_name,
-//                                @RequestParam String last_name,
-//                                @RequestParam String email,
-//                                    @RequestParam("profilePicture") MultipartFile file)
-//    {
+    @PostMapping("/profile")
+    public String UserUpdateProfile(HttpSession session,
+                                    Authentication authentication,
+                                    @RequestParam String first_name,
+                                    @RequestParam String last_name,
+                                    @RequestParam String email,
+                                    @RequestParam("profilePicture") MultipartFile file,
+                                    Model model)
+    {
 //        if(session.getAttribute("username") == null)
 //        {
 //            return "redirect:/login";
@@ -193,9 +166,9 @@ public class UserSettingController
 //        }
 //
 //
-//        return "redirect:/profile";
-//    }
-//
+        return "redirect:/profile";
+    }
+
     @GetMapping("/account-settings")
     public String UserAccountSettings(Authentication authentication, Model model)
     {
