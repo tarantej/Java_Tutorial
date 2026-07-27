@@ -62,18 +62,19 @@
                                              height:180px;
                                              object-fit:cover;
                                              border:4px solid #ff6b00;">
-                                                    <button class="avatar-camera-btn">
+                                                    <button type="button" class="avatar-camera-btn">
                                                         <i class="bi bi-camera-fill"></i>
                                                     </button>
                                                 </div>
                                                 <div class="mt-4">
+<!--                                                    <input-->
+<!--                                                            type="file"-->
+<!--                                                            id="profilePicture"-->
+<!--                                                            name="profilePicture">-->
                                                     <label for="profilePicture"
                                                            class="btn btn-outline-primary">
-
                                                         <i class="bi bi-upload ms-2"></i>
-
                                                         Upload New Photo
-
                                                     </label>
 
                                                     <input type="file"
@@ -377,6 +378,27 @@
     <!-- Footer -->
     <div th:replace="~{Dashboard/fragments/footer :: footer}"></div>
     <!-- End of Footer -->
+
+<!--Upload Image-->
+
+    <script th:inline="javascript">
+        document.getElementById("profilePicture")
+            .addEventListener("change", function () {
+                if (this.files.length > 0) {
+                    this.form.submit();
+                }
+            });
+
+    </script>
+
+<!-- Camera button also triggers file upload -->
+
+<script th:inline="javascript">
+    document.querySelector(".avatar-camera-btn")
+        .addEventListener("click", function () {
+            document.getElementById("profilePicture").click();
+        });
+</script>
 
 </body>
 

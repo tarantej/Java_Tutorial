@@ -46,7 +46,8 @@ public class SecurityConfig
                                 "/success",
                                 "/css/**",
                                 "/js/**",
-                                "/img/**"
+                                "/img/**",
+                                "/uploads/**"
                         )
                         .permitAll()
                         .anyRequest()

@@ -1,8 +1,8 @@
 package com.dashboard;
 
+import java.io.IOException;
 import java.sql.*;
 
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 
@@ -32,6 +32,18 @@ public class UserSettingController
     @GetMapping("/profile")
     public String UserProfile(Authentication authentication, Model model)
     {
+
+//        System.out.println("================================");
+//        System.out.println("Authentication Name : "
+//                + authentication.getName());
+//
+//        System.out.println("Principal Class : "
+//                + authentication.getPrincipal().getClass());
+//
+//        System.out.println("Principal : "
+//                + authentication.getPrincipal());
+//
+//        System.out.println("================================");
 
         DashboardUsers user = userRepository
                 .findByUsername(authentication.getName())
@@ -72,100 +84,38 @@ public class UserSettingController
     }
 
     @PostMapping("/profile")
-    public String UserUpdateProfile(HttpSession session,
-                                    Authentication authentication,
-                                    @RequestParam String first_name,
-                                    @RequestParam String last_name,
-                                    @RequestParam String email,
-                                    @RequestParam("profilePicture") MultipartFile file,
-                                    Model model)
-    {
-//        if(session.getAttribute("username") == null)
-//        {
-//            return "redirect:/login";
-//        }
-//
-//        String username = (String) session.getAttribute("username");
-//
-//        try {
-//
-//            Connection con = DriverManager.getConnection(
-//                    "jdbc:postgresql://localhost:5432/dashboard",
-//                    "postgres",
-//                    "12345"
-//            );
-//
-//            String filename = null;
-//
-//            // Get existing profile picture
-//            String currentQuery =
-//                    "SELECT profile_picture FROM users WHERE username=?";
-//
-//            PreparedStatement currentPs =
-//                    con.prepareStatement(currentQuery);
-//
-//            currentPs.setString(1, username);
-//
-//            ResultSet currentRs =
-//                    currentPs.executeQuery();
-//
-//            if(currentRs.next())
-//            {
-//                filename = currentRs.getString("profile_picture");
-//            }
-//
-//            // Upload Image
-//            if(!file.isEmpty())
-//            {
-//                filename = System.currentTimeMillis()
-//                        + "_"
-//                        + file.getOriginalFilename();
-//
-//                Path uploadPath = Paths.get(
-//                        "src/main/resources/static/uploads/profile"
-//                );
-//
-//                if (!Files.exists(uploadPath)) {
-//                    Files.createDirectories(uploadPath);
-//                }
-//
-//                Files.copy(
-//                        file.getInputStream(),
-//                        uploadPath.resolve(filename),
-//                        StandardCopyOption.REPLACE_EXISTING
-//                );
-//
-//               System.out.println(file.getOriginalFilename());
-//            }
-//
-//            String query = """
-//                UPDATE users
-//                SET first_name='Tarantej',
-//                    last_name='Singh',
-//                    email='tarantejsingh@gmail.com',
-//                    profile_picture=?
-//                WHERE username='Admin'
-//                """;
-//
-//            PreparedStatement ps = con.prepareStatement(query);
-//
-//            ps.setString(1, filename);
-//            ps.setString(2, username);
-//
-//            ps.setString(3, first_name);
-//            ps.setString(4, last_name);
-//            ps.setString(5, email);
-//
-//            ps.executeUpdate();
-//
-//        }
-//
-//        catch(Exception e)
-//        {
-//            e.printStackTrace();
-//        }
-//
-//
+    public String UserUpdateProfile(
+            Authentication authentication,
+            @RequestParam("profilePicture") MultipartFile file)
+            throws IOException {
+
+        if (file.isEmpty()) {
+            return "redirect:/profile";
+        }
+
+        DashboardUsers user = userRepository
+                .findByUsername(authentication.getName())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        String filename =
+                System.currentTimeMillis() + "_"
+                        + file.getOriginalFilename();
+
+        Path uploadPath = Paths.get(
+                "src/main/resources/static/uploads/profile");
+
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+        }
+
+        Files.copy(
+                file.getInputStream(),
+                uploadPath.resolve(filename),
+                StandardCopyOption.REPLACE_EXISTING);
+
+        user.setProfilePicture(filename);
+        userRepository.save(user);
+
         return "redirect:/profile";
     }
 

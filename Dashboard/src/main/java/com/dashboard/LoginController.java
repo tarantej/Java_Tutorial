@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import com.dashboard.service.CustomUserDetailsService;
+import com.dashboard.service.ImageDownloadService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -115,9 +116,16 @@ public class LoginController
         return "Login/OAuth/oauth-signup";
     }
 
+    @Autowired
+    private ImageDownloadService imageDownloadService;
+
     @PostMapping("/oauth-signup")
     public String PostOAuthSignup(Model model,
                                   @RequestParam String username,
+                                  @RequestParam String city,
+                                  @RequestParam String country,
+                                  @RequestParam(required = false) String phoneNumber,
+                                  @RequestParam(required = false) String userBio,
                                   @RequestParam String password,
                                   @RequestParam String confirmPassword,
                                   Authentication authentication)
@@ -139,11 +147,7 @@ public class LoginController
         String firstName = "";
         String lastName = "";
         String email = "";
-        String phoneNumber = "";
         String profilePicture = "";
-        String userBio = "";
-        String city = "";
-        String country = "";
 
         String oauthId = "";
         String oauthProvider = "";
@@ -212,14 +216,25 @@ public class LoginController
         user.setLastName(lastName);
         user.setEmail(email);
         user.setPhoneNumber(phoneNumber);
-        user.setOauthPicture(profilePicture);
         user.setUserBio(userBio);
         user.setUserCity(city);
         user.setUserCountry(country);
         user.setOauthProvider(oauthProvider);
         user.setOauthId(oauthId);
         user.setOauthPicture(oauthPicture);
-        user.setProfilePicture(null);
+
+        String localProfilePicture = null;
+
+        if (oauthPicture != null && !oauthPicture.isBlank())
+        {
+            localProfilePicture =
+                    imageDownloadService.downloadProfilePicture(
+                            oauthPicture,
+                            username
+                    );
+        }
+
+        user.setProfilePicture(localProfilePicture);
 
         user.setUserRole("EMPLOYEE");
 
@@ -236,6 +251,12 @@ public class LoginController
 
         user.setPassword(
                 passwordEncoder.encode(password));
+
+        Timestamp now =
+                new Timestamp(System.currentTimeMillis());
+
+        user.setCreatedAt(now);
+        user.setUpdatedAt(now);
 
         userRepository.save(user);
         return "redirect:/oauth-success";

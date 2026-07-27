@@ -74,10 +74,13 @@ public class DashboardController
         model.addAttribute("greeting", greeting);
 
         //  Get Session Username
-        model.addAttribute(
-                "first_name",
-                user.getFirstName()
-        );
+        model.addAttribute("first_name", user.getFirstName());
+
+        //  Get Profile Picture
+
+        model.addAttribute("profile_picture", user.getProfilePicture());
+        model.addAttribute("oauth_provider", user.getOauthProvider());
+        model.addAttribute("oauth_picture", user.getOauthPicture());
 
         return "Dashboard/dashboard";
     }

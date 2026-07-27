@@ -222,4 +222,6 @@ public class DashboardUsers
     public void setOauthPicture(String oauthPicture) {
         this.oauthPicture = oauthPicture;
     }
+
+    
 }
