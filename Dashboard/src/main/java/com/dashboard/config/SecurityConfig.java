@@ -47,7 +47,20 @@ public class SecurityConfig
                                 "/css/**",
                                 "/js/**",
                                 "/img/**",
-                                "/uploads/**"
+                                "/uploads/**",
+                                "/400",
+                                "/401",
+                                "/403",
+                                "/404",
+                                "/405",
+                                "/408",
+                                "/409",
+                                "/422",
+                                "/429",
+                                "/500",
+                                "/502",
+                                "/503",
+                                "/sb-admin-templates/**"
                         )
                         .permitAll()
                         .anyRequest()

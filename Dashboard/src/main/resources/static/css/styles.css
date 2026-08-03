@@ -13514,3 +13514,128 @@ footer a{
     text-align:center;
   }
 }
+
+/* ==========================================================
+   Custom Error Pages
+========================================================== */
+
+.error-page {
+  min-height: 100vh;
+  background: #f8f9fc;
+  display: flex;
+  flex-direction: column;
+}
+
+.error-header {
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background:#fff;
+}
+
+.error-logo img {
+  height: 48px;
+}
+
+.error-dashboard-link {
+  color: var(--bs-dark);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.error-dashboard-link:hover {
+  color: var(--bs-orange);
+}
+
+.error-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+}
+
+.error-card {
+  /*max-width: 700px;*/
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  border-radius: 20px;
+  padding: 3rem;
+}
+
+.error-image {
+  max-width: 320px;
+  margin-bottom: 2rem;
+}
+
+.error-code {
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--bs-orange);
+}
+
+.error-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--bs-dark);
+  margin-bottom: 1rem;
+}
+
+.error-description {
+  color: #6c757d;
+  max-width: 550px;
+  margin: 0 auto 2rem;
+  line-height: 1.8;
+}
+
+.error-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 320px;
+  margin: auto;
+}
+
+.error-footer {
+  padding: 2rem;
+  text-align: center;
+  font-size: .9rem;
+  color: #858796;
+}
+
+.error-footer a {
+  color: var(--bs-orange);
+  text-decoration: none;
+}
+
+.error-footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+
+  .error-header {
+    flex-direction: column;
+    gap: 1rem;
+    background:#fff;
+  }
+
+  .error-card {
+    padding: 2rem;
+  }
+
+  .error-code {
+    font-size: 4rem;
+  }
+
+  .error-title {
+    font-size: 1.75rem;
+  }
+
+  .error-actions {
+    max-width: 100%;
+  }
+
+}
